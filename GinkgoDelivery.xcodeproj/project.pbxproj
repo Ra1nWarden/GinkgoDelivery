@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A62EE05618405F1400657015 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62EE04E18405F1400657015 /* Icon-Small@2x.png */; };
-		A62EE05818405F1400657015 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62EE05018405F1400657015 /* Icon@2x.png */; };
-		A62EE05918405F1400657015 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = A62EE05118405F1400657015 /* Icon-Small.png */; };
-		A62EE05C18405F1400657015 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A62EE05418405F1400657015 /* Icon.png */; };
-		A62EE05E1840603C00657015 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62EE05D1840603C00657015 /* Icon-60@2x.png */; };
-		A62EE0601840605D00657015 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62EE05F1840605D00657015 /* Icon-40@2x.png */; };
 		A62EE0631840613600657015 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A62EE0621840613600657015 /* Contents.json */; };
 		A62EE0651840632000657015 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62EE0641840632000657015 /* Default-568h@2x.png */; };
+		A62EE06B1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE06A1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m */; };
+		A62EE06D18408F3900657015 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE06C18408F3900657015 /* Parse.framework */; };
+		A62EE06F18408F8500657015 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE06E18408F8500657015 /* AudioToolbox.framework */; };
+		A62EE07118408F8E00657015 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07018408F8E00657015 /* CFNetwork.framework */; };
+		A62EE07318408F9F00657015 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07218408F9F00657015 /* CoreLocation.framework */; };
+		A62EE07518408FAB00657015 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07418408FAB00657015 /* libz.1.1.3.dylib */; };
+		A62EE07718408FB400657015 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07618408FB400657015 /* MobileCoreServices.framework */; };
+		A62EE07918408FC200657015 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07818408FC200657015 /* QuartzCore.framework */; };
+		A62EE07B18408FCC00657015 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07A18408FCC00657015 /* Security.framework */; };
+		A62EE07D18408FD500657015 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07C18408FD500657015 /* StoreKit.framework */; };
+		A62EE07F18408FE000657015 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07E18408FE000657015 /* SystemConfiguration.framework */; };
+		A62EE0821840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE0811840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m */; };
 		A6B1AD4D18404A8A00FA8E33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B1AD4C18404A8A00FA8E33 /* Foundation.framework */; };
 		A6B1AD4F18404A8A00FA8E33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B1AD4E18404A8A00FA8E33 /* CoreGraphics.framework */; };
 		A6B1AD5118404A8A00FA8E33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B1AD5018404A8A00FA8E33 /* UIKit.framework */; };
@@ -42,14 +48,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A62EE04E18405F1400657015 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "../../../../../../../Desktop/Icon-Small@2x.png"; sourceTree = "<group>"; };
-		A62EE05018405F1400657015 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../../../../../../Desktop/Icon@2x.png"; sourceTree = "<group>"; };
-		A62EE05118405F1400657015 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "../../../../../../../Desktop/Icon-Small.png"; sourceTree = "<group>"; };
-		A62EE05418405F1400657015 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../../../../../../Desktop/Icon.png; sourceTree = "<group>"; };
-		A62EE05D1840603C00657015 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "../../../../../../../Desktop/Icon-60@2x.png"; sourceTree = "<group>"; };
-		A62EE05F1840605D00657015 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "../../../../../../../Desktop/Icon-40@2x.png"; sourceTree = "<group>"; };
 		A62EE0621840613600657015 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		A62EE0641840632000657015 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A62EE0641840632000657015 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Default-568h@2x.png"; sourceTree = "<group>"; };
+		A62EE0691840844200657015 /* GinkgoDeliveryOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryOrdersTableViewController.h; sourceTree = SOURCE_ROOT; };
+		A62EE06A1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryOrdersTableViewController.m; sourceTree = SOURCE_ROOT; };
+		A62EE06C18408F3900657015 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A62EE06E18408F8500657015 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A62EE07018408F8E00657015 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A62EE07218408F9F00657015 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A62EE07418408FAB00657015 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		A62EE07618408FB400657015 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A62EE07818408FC200657015 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A62EE07A18408FCC00657015 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A62EE07C18408FD500657015 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A62EE07E18408FE000657015 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A62EE0801840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryMyOrderTableViewController.h; sourceTree = "<group>"; };
+		A62EE0811840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryMyOrderTableViewController.m; sourceTree = "<group>"; };
 		A6B1AD4918404A8A00FA8E33 /* GinkgoDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GinkgoDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B1AD4C18404A8A00FA8E33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A6B1AD4E18404A8A00FA8E33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,8 +90,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62EE07F18408FE000657015 /* SystemConfiguration.framework in Frameworks */,
+				A62EE07D18408FD500657015 /* StoreKit.framework in Frameworks */,
+				A62EE07B18408FCC00657015 /* Security.framework in Frameworks */,
+				A62EE07918408FC200657015 /* QuartzCore.framework in Frameworks */,
+				A62EE07718408FB400657015 /* MobileCoreServices.framework in Frameworks */,
+				A62EE07518408FAB00657015 /* libz.1.1.3.dylib in Frameworks */,
+				A62EE07318408F9F00657015 /* CoreLocation.framework in Frameworks */,
 				A6B1AD4F18404A8A00FA8E33 /* CoreGraphics.framework in Frameworks */,
+				A62EE07118408F8E00657015 /* CFNetwork.framework in Frameworks */,
+				A62EE06F18408F8500657015 /* AudioToolbox.framework in Frameworks */,
 				A6B1AD5118404A8A00FA8E33 /* UIKit.framework in Frameworks */,
+				A62EE06D18408F3900657015 /* Parse.framework in Frameworks */,
 				A6B1AD4D18404A8A00FA8E33 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +122,7 @@
 		A62EE0611840613600657015 /* AppIcon.appiconset */ = {
 			isa = PBXGroup;
 			children = (
+				A62EE0641840632000657015 /* Default-568h@2x.png */,
 				A62EE0621840613600657015 /* Contents.json */,
 			);
 			name = AppIcon.appiconset;
@@ -107,7 +132,6 @@
 		A6B1AD4018404A8A00FA8E33 = {
 			isa = PBXGroup;
 			children = (
-				A62EE0641840632000657015 /* Default-568h@2x.png */,
 				A6B1AD5218404A8A00FA8E33 /* GinkgoDelivery */,
 				A6B1AD7118404A8A00FA8E33 /* GinkgoDeliveryTests */,
 				A6B1AD4B18404A8A00FA8E33 /* Frameworks */,
@@ -127,6 +151,16 @@
 		A6B1AD4B18404A8A00FA8E33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A62EE07E18408FE000657015 /* SystemConfiguration.framework */,
+				A62EE07C18408FD500657015 /* StoreKit.framework */,
+				A62EE07A18408FCC00657015 /* Security.framework */,
+				A62EE07818408FC200657015 /* QuartzCore.framework */,
+				A62EE07618408FB400657015 /* MobileCoreServices.framework */,
+				A62EE07418408FAB00657015 /* libz.1.1.3.dylib */,
+				A62EE07218408F9F00657015 /* CoreLocation.framework */,
+				A62EE07018408F8E00657015 /* CFNetwork.framework */,
+				A62EE06E18408F8500657015 /* AudioToolbox.framework */,
+				A62EE06C18408F3900657015 /* Parse.framework */,
 				A6B1AD4C18404A8A00FA8E33 /* Foundation.framework */,
 				A6B1AD4E18404A8A00FA8E33 /* CoreGraphics.framework */,
 				A6B1AD5018404A8A00FA8E33 /* UIKit.framework */,
@@ -138,9 +172,13 @@
 		A6B1AD5218404A8A00FA8E33 /* GinkgoDelivery */ = {
 			isa = PBXGroup;
 			children = (
+				A62EE0691840844200657015 /* GinkgoDeliveryOrdersTableViewController.h */,
+				A62EE06A1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m */,
 				A6B1AD5B18404A8A00FA8E33 /* GinkgoDeliveryAppDelegate.h */,
 				A6B1AD5C18404A8A00FA8E33 /* GinkgoDeliveryAppDelegate.m */,
 				A6B1AD5E18404A8A00FA8E33 /* Main.storyboard */,
+				A62EE0801840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.h */,
+				A62EE0811840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m */,
 				A6B1AD6118404A8A00FA8E33 /* GinkgoDeliveryViewController.h */,
 				A6B1AD6218404A8A00FA8E33 /* GinkgoDeliveryViewController.m */,
 				A6B1AD6418404A8A00FA8E33 /* Images.xcassets */,
@@ -152,13 +190,7 @@
 		A6B1AD5318404A8A00FA8E33 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A62EE04E18405F1400657015 /* Icon-Small@2x.png */,
-				A62EE05018405F1400657015 /* Icon@2x.png */,
-				A62EE05F1840605D00657015 /* Icon-40@2x.png */,
 				A62EE0611840613600657015 /* AppIcon.appiconset */,
-				A62EE05118405F1400657015 /* Icon-Small.png */,
-				A62EE05D1840603C00657015 /* Icon-60@2x.png */,
-				A62EE05418405F1400657015 /* Icon.png */,
 				A6B1AD5418404A8A00FA8E33 /* GinkgoDelivery-Info.plist */,
 				A6B1AD5518404A8A00FA8E33 /* InfoPlist.strings */,
 				A6B1AD5818404A8A00FA8E33 /* main.m */,
@@ -262,17 +294,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A62EE05918405F1400657015 /* Icon-Small.png in Resources */,
 				A62EE0651840632000657015 /* Default-568h@2x.png in Resources */,
 				A6B1AD6518404A8A00FA8E33 /* Images.xcassets in Resources */,
 				A6B1AD5718404A8A00FA8E33 /* InfoPlist.strings in Resources */,
-				A62EE05818405F1400657015 /* Icon@2x.png in Resources */,
-				A62EE05C18405F1400657015 /* Icon.png in Resources */,
 				A62EE0631840613600657015 /* Contents.json in Resources */,
-				A62EE0601840605D00657015 /* Icon-40@2x.png in Resources */,
-				A62EE05618405F1400657015 /* Icon-Small@2x.png in Resources */,
 				A6B1AD6018404A8A00FA8E33 /* Main.storyboard in Resources */,
-				A62EE05E1840603C00657015 /* Icon-60@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +318,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B1AD6318404A8A00FA8E33 /* GinkgoDeliveryViewController.m in Sources */,
+				A62EE06B1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m in Sources */,
 				A6B1AD5918404A8A00FA8E33 /* main.m in Sources */,
+				A62EE0821840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m in Sources */,
 				A6B1AD5D18404A8A00FA8E33 /* GinkgoDeliveryAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,8 +447,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/zihaowang/Dropbox/Documents/UVa/Others/Xcode\\ Project/GinkgoDelivery",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GinkgoDelivery/GinkgoDelivery-Prefix.pch";
 				INFOPLIST_FILE = "GinkgoDelivery/GinkgoDelivery-Info.plist";
@@ -435,8 +468,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/zihaowang/Dropbox/Documents/UVa/Others/Xcode\\ Project/GinkgoDelivery",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GinkgoDelivery/GinkgoDelivery-Prefix.pch";
 				INFOPLIST_FILE = "GinkgoDelivery/GinkgoDelivery-Info.plist";
