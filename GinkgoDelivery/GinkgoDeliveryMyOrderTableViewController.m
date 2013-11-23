@@ -7,6 +7,7 @@
 //
 
 #import "GinkgoDeliveryMyOrderTableViewController.h"
+#import "GinkgoDeliveryOrderInfoViewController.h"
 
 @interface GinkgoDeliveryMyOrderTableViewController ()
 
@@ -98,6 +99,16 @@
         cell.textLabel.text = [orderNumber stringValue];
     }
     return cell;
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    static NSString *CellIdentifier = @"MyOrder";
+    if([segue.identifier isEqualToString:@"Order info"]) {
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedRowIndex];
+        NSNumber * orderNumer = [NSNumber numberWithInt:[cell.textLabel.text integerValue]];
+        [segue.destinationViewController setOrderNumber: orderNumer];
+    }
 }
 
 /*
