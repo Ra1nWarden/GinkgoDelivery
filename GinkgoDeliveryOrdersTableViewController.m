@@ -48,7 +48,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     self.query = [PFQuery queryWithClassName:@"_Product"];
-    NSLog(@"Found: %d matches", [self.query countObjects]);
     return [self.query countObjects];
 }
 
@@ -69,8 +68,8 @@
     static NSString *CellIdentifier = @"Dish";
     if([segue.identifier isEqualToString:@"Dish to Pickup Point"]) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:selectedRowIndex];
-      
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedRowIndex];
+
         [segue.destinationViewController setDish: cell.textLabel.text];
     }
 }

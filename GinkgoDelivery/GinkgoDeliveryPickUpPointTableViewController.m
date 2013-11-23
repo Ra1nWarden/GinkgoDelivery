@@ -7,6 +7,7 @@
 //
 
 #import "GinkgoDeliveryPickUpPointTableViewController.h"
+#import "GinkgoDeliveryConfirmationViewController.h"
 #import "GinkgoDeliveryOrdersTableViewController.h"
 
 @interface GinkgoDeliveryPickUpPointTableViewController ()
@@ -65,6 +66,18 @@
     cell.textLabel.text = [[allMatch objectAtIndex:indexPath.row] valueForKey:@"place"];
     return cell;
 }
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    static NSString *CellIdentifier = @"Places";
+    if([segue.identifier isEqualToString:@"Pickup Point to Confirmation"]) {
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedRowIndex];
+        [segue.destinationViewController setPickuppoint: cell.textLabel.text];
+        [segue.destinationViewController setDish: self.dish];
+    }
+
+}
+
 
 /*
 // Override to support conditional editing of the table view.

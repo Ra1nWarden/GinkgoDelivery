@@ -44,11 +44,36 @@
 
 #pragma mark - Table view data source
 
+-(void) validate {
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray * array = [[defaults arrayForKey:@"localOrder"] mutableCopy];
+    if(!array)
+        array = [NSMutableArray array];
+    PFQuery * checkKey = [PFQuery queryWithClassName:@"Order"];
+    NSArray * allOrders =[checkKey findObjects];
+    NSMutableArray * newarray = [NSMutableArray array];
+    for(id each in array) {
+        BOOL found = NO;
+        for(PFQuery * eachOrder in allOrders) {
+            if([[eachOrder valueForKey:@"objectId"] isEqualToString: each]) {
+                found = YES;
+                break;
+            }
+        }
+        if(found) {
+            [newarray addObject:each];
+        }
+    }
+    [defaults setObject:newarray forKey:@"localOrder"];
+    [defaults synchronize];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [self validate];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray * array = [[defaults arrayForKey:@"OrderForToday"] mutableCopy];
+    NSMutableArray * array = [[defaults arrayForKey:@"localOrder"] mutableCopy];
     if(!array)
         array = [NSMutableArray array];
     return [array count];
@@ -56,24 +81,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self validate];
     static NSString *CellIdentifier = @"MyOrder";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray * array = [[defaults arrayForKey:@"OrderForToday"] mutableCopy];
+    NSMutableArray * array = [[defaults arrayForKey:@"localOrder"] mutableCopy];
     if(!array)
         array = [NSMutableArray array];
-    NSString * display = [[NSString alloc] init];
-    id ordernumber;
-    
+    PFQuery * orderQuery = [PFQuery queryWithClassName:@"Order"];
+    NSArray * allOrders = [orderQuery findObjects];
     if([array count] != 0) {
-        ordernumber = [array objectAtIndex:indexPath.row];
+        PFObject * currentOrder = [allOrders objectAtIndex:indexPath.row];
+        NSNumber * orderNumber = [currentOrder valueForKey:@"orderNo"];
+        cell.textLabel.text = [orderNumber stringValue];
     }
-    
-    self.query = [PFQuery queryWithClassName:@"Orders"];
-    display = [[self.query valueForKey:ordernumber] valueForKey:@"title"];
-    cell.textLabel.text = display;
     return cell;
 }
 
