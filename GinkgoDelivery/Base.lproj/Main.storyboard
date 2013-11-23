@@ -70,15 +70,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Dish" textLabel="acD-Hd-ZIL" style="IBUITableViewCellStyleDefault" id="gEs-Zq-ryQ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Dish" textLabel="acD-Hd-ZIL" style="IBUITableViewCellStyleDefault" id="gEs-Zq-ryQ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gEs-Zq-ryQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="acD-Hd-ZIL">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -86,6 +86,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="vfR-4a-ZhE" kind="push" identifier="Dish to Pickup Point" id="x8h-DA-AYP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -98,7 +101,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRI-i2-vBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="-4"/>
+            <point key="canvasLocation" x="674" y="-15"/>
         </scene>
         <!--Ginkgo Delivery My Order Table View Controller - My Orders-->
         <scene sceneID="Byi-ka-FNd">
@@ -138,6 +141,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9TV-S7-KEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="674" y="689"/>
+        </scene>
+        <!--Ginkgo Delivery Pick Up Point Table View Controller - Select your pick-up point-->
+        <scene sceneID="g4t-gk-hYS">
+            <objects>
+                <tableViewController id="vfR-4a-ZhE" customClass="GinkgoDeliveryPickUpPointTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="e6s-nb-hYX">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Places" textLabel="ti5-ml-ZCO" style="IBUITableViewCellStyleDefault" id="81U-27-xM2">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="81U-27-xM2" id="W4l-0P-yN6">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ti5-ml-ZCO">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="qfy-2z-zRR" kind="push" id="juK-8D-hNg"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="vfR-4a-ZhE" id="6Zt-SI-sUg"/>
+                            <outlet property="delegate" destination="vfR-4a-ZhE" id="krY-K0-8Ze"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select your pick-up point" id="Vsg-tk-SNk"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nj5-Ar-oXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063" y="-15"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6qK-AY-ua5">
+            <objects>
+                <viewController id="qfy-2z-zRR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aan-yr-4Lw"/>
+                        <viewControllerLayoutGuide type="bottom" id="it7-qz-0vG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fvn-c7-MCq">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9kC-Zv-AG6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="re8-UT-jRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1501" y="255"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -1,20 +1,20 @@
 //
-//  GinkgoDeliveryOrdersTableViewController.m
+//  GinkgoDeliveryPickUpPointTableViewController.m
 //  GinkgoDelivery
 //
 //  Created by Zihao Wang on 23/11/13.
 //  Copyright (c) 2013 Zihao Wang. All rights reserved.
 //
 
-#import "GinkgoDeliveryOrdersTableViewController.h"
 #import "GinkgoDeliveryPickUpPointTableViewController.h"
+#import "GinkgoDeliveryOrdersTableViewController.h"
 
-@interface GinkgoDeliveryOrdersTableViewController ()
+@interface GinkgoDeliveryPickUpPointTableViewController ()
 
 @end
 
-@implementation GinkgoDeliveryOrdersTableViewController
-
+@implementation GinkgoDeliveryPickUpPointTableViewController
+@synthesize dish = _dish;
 @synthesize query = _query;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -45,34 +45,25 @@
 
 #pragma mark - Table view data source
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    self.query = [PFQuery queryWithClassName:@"_Product"];
+    self.query = [PFQuery queryWithClassName:@"PickUpPoint"];
     NSLog(@"Found: %d matches", [self.query countObjects]);
     return [self.query countObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Dish";
+    static NSString *CellIdentifier = @"Places";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     
-    self.query = [PFQuery queryWithClassName:@"_Product"];
+    self.query = [PFQuery queryWithClassName:@"PickUpPoint"];
     NSArray * allMatch = [self.query findObjects];
-    cell.textLabel.text = [[allMatch objectAtIndex:indexPath.row] valueForKey:@"title"];
+    cell.textLabel.text = [[allMatch objectAtIndex:indexPath.row] valueForKey:@"place"];
     return cell;
-}
-
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    static NSString *CellIdentifier = @"Dish";
-    if([segue.identifier isEqualToString:@"Dish to Pickup Point"]) {
-        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:selectedRowIndex];
-      
-        [segue.destinationViewController setDish: cell.textLabel.text];
-    }
 }
 
 /*
