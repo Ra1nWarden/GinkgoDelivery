@@ -26,8 +26,10 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
-	PFQuery * query = [PFQuery queryWithClassName:@"Order"];
+    NSLog(@"Calling viewDidLoad value: %@",[self.orderNumber stringValue]);
+    PFQuery * query = [PFQuery queryWithClassName:@"Order"];
     NSArray * array = [query findObjects];
     NSString * dishName = [[NSString alloc] init];
     NSString * pickUp = [[NSString alloc] init];
@@ -38,11 +40,14 @@
             break;
         }
     }
-    UILabel * orderlabel = [self.view viewWithTag:1];
+    NSLog(dishName);
+    NSLog(pickUp);
+    NSLog([self.orderNumber stringValue]);
+    UILabel * orderlabel = [self.view viewWithTag: 1];
     orderlabel.text = [self.orderNumber stringValue];
-    UILabel * dishlabel = [self.view viewWithTag:2];
+    UILabel * dishlabel = [self.view viewWithTag: 2];
     dishlabel.text = dishName;
-    UILabel * placelabel = [self.view viewWithTag:3];
+    UILabel * placelabel = [self.view viewWithTag: 3];
     placelabel.text = pickUp;
 }
 
