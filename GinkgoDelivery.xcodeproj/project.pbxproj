@@ -24,6 +24,7 @@
 		A62EE0851840BD1700657015 /* GinkgoDeliveryPickUpPointTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE0841840BD1700657015 /* GinkgoDeliveryPickUpPointTableViewController.m */; };
 		A62EE0881840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE0871840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m */; };
 		A62EE08B1841699A00657015 /* GinkgoDeliveryOrderInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE08A1841699A00657015 /* GinkgoDeliveryOrderInfoViewController.m */; };
+		A65FFD9F184184750097AEDC /* GinkgoDeliveryHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65FFD9E184184750097AEDC /* GinkgoDeliveryHomeViewController.m */; };
 		A6B1AD4D18404A8A00FA8E33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B1AD4C18404A8A00FA8E33 /* Foundation.framework */; };
 		A6B1AD4F18404A8A00FA8E33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B1AD4E18404A8A00FA8E33 /* CoreGraphics.framework */; };
 		A6B1AD5118404A8A00FA8E33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B1AD5018404A8A00FA8E33 /* UIKit.framework */; };
@@ -72,6 +73,8 @@
 		A62EE0871840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryConfirmationViewController.m; sourceTree = "<group>"; };
 		A62EE0891841699A00657015 /* GinkgoDeliveryOrderInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryOrderInfoViewController.h; sourceTree = "<group>"; };
 		A62EE08A1841699A00657015 /* GinkgoDeliveryOrderInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryOrderInfoViewController.m; sourceTree = "<group>"; };
+		A65FFD9D184184750097AEDC /* GinkgoDeliveryHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryHomeViewController.h; sourceTree = SOURCE_ROOT; };
+		A65FFD9E184184750097AEDC /* GinkgoDeliveryHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryHomeViewController.m; sourceTree = SOURCE_ROOT; };
 		A6B1AD4918404A8A00FA8E33 /* GinkgoDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GinkgoDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B1AD4C18404A8A00FA8E33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A6B1AD4E18404A8A00FA8E33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -178,6 +181,8 @@
 		A6B1AD5218404A8A00FA8E33 /* GinkgoDelivery */ = {
 			isa = PBXGroup;
 			children = (
+				A65FFD9D184184750097AEDC /* GinkgoDeliveryHomeViewController.h */,
+				A65FFD9E184184750097AEDC /* GinkgoDeliveryHomeViewController.m */,
 				A62EE0691840844200657015 /* GinkgoDeliveryOrdersTableViewController.h */,
 				A62EE06A1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m */,
 				A6B1AD5B18404A8A00FA8E33 /* GinkgoDeliveryAppDelegate.h */,
@@ -327,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65FFD9F184184750097AEDC /* GinkgoDeliveryHomeViewController.m in Sources */,
 				A62EE0881840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m in Sources */,
 				A62EE0851840BD1700657015 /* GinkgoDeliveryPickUpPointTableViewController.m in Sources */,
 				A62EE06B1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m in Sources */,

@@ -77,6 +77,7 @@
     NSMutableArray * array = [[defaults arrayForKey:@"localOrder"] mutableCopy];
     if(!array)
         array = [NSMutableArray array];
+    NSLog(@"Value for the tableViewController %u",[array count]);
     return [array count];
 }
 
