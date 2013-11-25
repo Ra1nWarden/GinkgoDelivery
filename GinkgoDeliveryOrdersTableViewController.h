@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface GinkgoDeliveryOrdersTableViewController : UITableViewController
+@interface GinkgoDeliveryOrdersTableViewController : UITableViewController <UITableViewDataSource>
 
 @property PFQuery * query;
 

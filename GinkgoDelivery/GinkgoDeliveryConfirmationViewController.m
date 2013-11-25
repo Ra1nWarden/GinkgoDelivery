@@ -31,9 +31,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UILabel * dishlabel = [self.view viewWithTag:1];
+    UILabel * dishlabel = (UILabel *)[self.view viewWithTag:1];
     dishlabel.text = self.dish;
-    UILabel * placelabel = [self.view viewWithTag:2];
+    UILabel * placelabel = (UILabel *)[self.view viewWithTag:2];
     placelabel.text = self.pickuppoint;
     
 }
@@ -56,15 +56,18 @@
         myOrder[@"orderNo"] = neworder;
         [myOrder saveInBackground];
         
+        
         query = [PFQuery queryWithClassName:@"_Product"];
         NSArray * products = [query findObjects];
         for(PFObject * each in products) {
             if([[each valueForKey:@"title"] isEqualToString:self.dish]) {
                 [each incrementKey:@"order"];
+                [each saveInBackground];
                 break;
             }
         }
         
+        // Store the data locally
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         NSMutableArray * array = [[defaults arrayForKey:@"localOrder"] mutableCopy];
         if(!array)

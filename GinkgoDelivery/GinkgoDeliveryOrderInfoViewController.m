@@ -40,14 +40,11 @@
             break;
         }
     }
-    NSLog(dishName);
-    NSLog(pickUp);
-    NSLog([self.orderNumber stringValue]);
-    UILabel * orderlabel = [self.view viewWithTag: 1];
+    UILabel * orderlabel = (UILabel *) [self.view viewWithTag: 1];
     orderlabel.text = [self.orderNumber stringValue];
-    UILabel * dishlabel = [self.view viewWithTag: 2];
+    UILabel * dishlabel = (UILabel *) [self.view viewWithTag: 2];
     dishlabel.text = dishName;
-    UILabel * placelabel = [self.view viewWithTag: 3];
+    UILabel * placelabel = (UILabel *) [self.view viewWithTag: 3];
     placelabel.text = pickUp;
 }
 

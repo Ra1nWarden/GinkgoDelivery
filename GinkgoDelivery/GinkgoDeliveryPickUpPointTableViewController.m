@@ -50,7 +50,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     self.query = [PFQuery queryWithClassName:@"PickUpPoint"];
-    NSLog(@"Found: %d matches", [self.query countObjects]);
     return [self.query countObjects];
 }
 
@@ -68,7 +67,6 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    static NSString *CellIdentifier = @"Places";
     if([segue.identifier isEqualToString:@"Pickup Point to Confirmation"]) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedRowIndex];

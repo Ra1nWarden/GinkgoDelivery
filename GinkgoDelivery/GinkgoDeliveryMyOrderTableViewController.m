@@ -103,7 +103,6 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    static NSString *CellIdentifier = @"MyOrder";
     if([segue.identifier isEqualToString:@"Order Info"]) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedRowIndex];

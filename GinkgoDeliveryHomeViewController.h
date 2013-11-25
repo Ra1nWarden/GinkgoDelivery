@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface GinkgoDeliveryHomeViewController : UIViewController
--(void)handleBack:(id)sender;
 @end
