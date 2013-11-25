@@ -12,6 +12,7 @@
 @interface GinkgoDeliveryPickUpPointTableViewController : UITableViewController
 
 @property NSString * dish;
-@property PFQuery * query;
+@property(nonatomic, readonly) PFQuery * query;
+@property(nonatomic, readonly) NSArray * places;
 
 @end

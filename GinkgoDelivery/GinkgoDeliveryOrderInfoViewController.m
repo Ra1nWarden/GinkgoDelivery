@@ -28,7 +28,6 @@
 {
     
     [super viewDidLoad];
-    NSLog(@"Calling viewDidLoad value: %@",[self.orderNumber stringValue]);
     PFQuery * query = [PFQuery queryWithClassName:@"Order"];
     NSArray * array = [query findObjects];
     NSString * dishName = [[NSString alloc] init];

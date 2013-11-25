@@ -9,19 +9,42 @@
 #import "GinkgoDeliveryOrdersTableViewController.h"
 #import "GinkgoDeliveryPickUpPointTableViewController.h"
 
-@interface GinkgoDeliveryOrdersTableViewController () <UITableViewDataSource>
+@interface GinkgoDeliveryOrdersTableViewController () 
 
 @end
 
 @implementation GinkgoDeliveryOrdersTableViewController
 
 @synthesize query = _query;
+@synthesize products = _products;
+//@synthesize categories = _categories;
+
+- (PFQuery *)query {
+    if(! _query)
+        _query = [PFQuery queryWithClassName:@"_Product"];
+    return _query;
+}
+
+- (NSArray *)products{
+    if(! _products)
+        _products = [_query findObjects];
+    return _products;
+}
+
+//- (void) initCategories {
+//    if(! _products)
+//        [self initProducts];
+//    for(PFObject * each in _products) {
+//        NSString * currentCategory = [each valueForKey:@"subtitle"];
+//        if([_categories ])
+//    }
+//}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -45,11 +68,20 @@
 
 #pragma mark - Table view data source
 
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    self.query = [PFQuery queryWithClassName:@"_Product"];
+//    
+//}
+//
+//- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    
+//}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    self.query = [PFQuery queryWithClassName:@"_Product"];
     return [self.query countObjects];
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -57,10 +89,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    
-    self.query = [PFQuery queryWithClassName:@"_Product"];
-    NSArray * allMatch = [self.query findObjects];
-    cell.textLabel.text = [[allMatch objectAtIndex:indexPath.row] valueForKey:@"title"];
+    cell.textLabel.text = [[self.products objectAtIndex:indexPath.row] valueForKey:@"title"];
     return cell;
 }
 

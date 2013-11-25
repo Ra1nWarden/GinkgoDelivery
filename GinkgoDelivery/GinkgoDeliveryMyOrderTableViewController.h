@@ -10,6 +10,5 @@
 #import <Parse/Parse.h>
 
 @interface GinkgoDeliveryMyOrderTableViewController : UITableViewController
-@property PFQuery * query;
 
 @end

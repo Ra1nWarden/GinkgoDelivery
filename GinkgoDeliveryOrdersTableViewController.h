@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface GinkgoDeliveryOrdersTableViewController : UITableViewController <UITableViewDataSource>
+@interface GinkgoDeliveryOrdersTableViewController : UITableViewController
 
-@property PFQuery * query;
+@property(nonatomic, readonly) PFQuery * query;
+@property(nonatomic, readonly) NSArray * products;
+//@property NSDictionary * categories;
 
 @end
