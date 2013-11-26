@@ -13,6 +13,6 @@
 
 @property(nonatomic, readonly) PFQuery * query;
 @property(nonatomic, readonly) NSArray * products;
-//@property NSDictionary * categories;
+@property(nonatomic) NSMutableDictionary * categories;
 
 @end

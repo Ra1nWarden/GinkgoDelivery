@@ -17,7 +17,7 @@
 
 @synthesize query = _query;
 @synthesize products = _products;
-//@synthesize categories = _categories;
+@synthesize categories = _categories;
 
 - (PFQuery *)query {
     if(! _query)
@@ -27,18 +27,25 @@
 
 - (NSArray *)products{
     if(! _products)
-        _products = [_query findObjects];
+        _products = [self.query findObjects];
     return _products;
 }
 
-//- (void) initCategories {
-//    if(! _products)
-//        [self initProducts];
-//    for(PFObject * each in _products) {
-//        NSString * currentCategory = [each valueForKey:@"subtitle"];
-//        if([_categories ])
-//    }
-//}
+- (NSMutableDictionary *)categories{
+    if(! _categories) {
+        _categories = [NSMutableDictionary new];
+        for(PFObject * each in self.products) {
+            NSString * currentcategory = [each valueForKey:@"subtitle"];
+            NSMutableArray * currentlist = [_categories objectForKey:currentcategory];
+            if(! currentlist) {
+                currentlist = [NSMutableArray array];
+            }
+            [currentlist addObject:each];
+            [_categories setObject:currentlist forKey:currentcategory];
+        }
+    }
+    return _categories;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -68,28 +75,36 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    self.query = [PFQuery queryWithClassName:@"_Product"];
-//    
-//}
-//
-//- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSLog(@"numberofsection");
+    return [self.categories count];
+    
+}
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSLog(@"titleforheader");
+    return [[self.categories allKeys] objectAtIndex:section];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.query countObjects];
+    NSLog(@"NumberofRows");
+    NSString * currentCategory = [self tableView:tableView titleForHeaderInSection:section];
+    return [[self.categories valueForKey:currentCategory] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Drawing cells");
     static NSString *CellIdentifier = @"Dish";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [[self.products objectAtIndex:indexPath.row] valueForKey:@"title"];
+    NSString * currentCategory = [self tableView:tableView titleForHeaderInSection:indexPath.section];
+    PFObject * dish = [[self.categories objectForKey:currentCategory] objectAtIndex:indexPath.row];
+    NSString * dishName = [dish valueForKey:@"title"];
+    cell.textLabel.text = dishName;
     return cell;
 }
 
