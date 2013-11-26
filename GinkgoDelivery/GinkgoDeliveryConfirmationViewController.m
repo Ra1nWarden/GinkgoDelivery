@@ -33,8 +33,10 @@
 	// Do any additional setup after loading the view.
     UILabel * dishlabel = (UILabel *)[self.view viewWithTag:1];
     dishlabel.text = self.dish;
+    dishlabel.adjustsFontSizeToFitWidth = YES;
     UILabel * placelabel = (UILabel *)[self.view viewWithTag:2];
     placelabel.text = self.pickuppoint;
+    placelabel.adjustsFontSizeToFitWidth = YES;
     
 }
 

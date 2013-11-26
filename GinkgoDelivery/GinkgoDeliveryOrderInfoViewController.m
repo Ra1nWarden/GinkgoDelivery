@@ -41,10 +41,13 @@
     }
     UILabel * orderlabel = (UILabel *) [self.view viewWithTag: 1];
     orderlabel.text = [self.orderNumber stringValue];
+    orderlabel.adjustsFontSizeToFitWidth = YES;
     UILabel * dishlabel = (UILabel *) [self.view viewWithTag: 2];
     dishlabel.text = dishName;
+    dishlabel.adjustsFontSizeToFitWidth = YES;
     UILabel * placelabel = (UILabel *) [self.view viewWithTag: 3];
     placelabel.text = pickUp;
+    placelabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)didReceiveMemoryWarning
