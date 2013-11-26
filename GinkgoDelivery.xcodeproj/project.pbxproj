@@ -18,7 +18,6 @@
 		A62EE07718408FB400657015 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07618408FB400657015 /* MobileCoreServices.framework */; };
 		A62EE07918408FC200657015 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07818408FC200657015 /* QuartzCore.framework */; };
 		A62EE07B18408FCC00657015 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07A18408FCC00657015 /* Security.framework */; };
-		A62EE07D18408FD500657015 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07C18408FD500657015 /* StoreKit.framework */; };
 		A62EE07F18408FE000657015 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07E18408FE000657015 /* SystemConfiguration.framework */; };
 		A62EE0821840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE0811840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m */; };
 		A62EE0851840BD1700657015 /* GinkgoDeliveryPickUpPointTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE0841840BD1700657015 /* GinkgoDeliveryPickUpPointTableViewController.m */; };
@@ -63,7 +62,6 @@
 		A62EE07618408FB400657015 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A62EE07818408FC200657015 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A62EE07A18408FCC00657015 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		A62EE07C18408FD500657015 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A62EE07E18408FE000657015 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A62EE0801840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryMyOrderTableViewController.h; sourceTree = "<group>"; };
 		A62EE0811840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryMyOrderTableViewController.m; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A62EE07F18408FE000657015 /* SystemConfiguration.framework in Frameworks */,
-				A62EE07D18408FD500657015 /* StoreKit.framework in Frameworks */,
 				A62EE07B18408FCC00657015 /* Security.framework in Frameworks */,
 				A62EE07918408FC200657015 /* QuartzCore.framework in Frameworks */,
 				A62EE07718408FB400657015 /* MobileCoreServices.framework in Frameworks */,
@@ -161,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				A62EE07E18408FE000657015 /* SystemConfiguration.framework */,
-				A62EE07C18408FD500657015 /* StoreKit.framework */,
 				A62EE07A18408FCC00657015 /* Security.framework */,
 				A62EE07818408FC200657015 /* QuartzCore.framework */,
 				A62EE07618408FB400657015 /* MobileCoreServices.framework */,
@@ -280,6 +276,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Zihao Wang";
 				TargetAttributes = {
+					A6B1AD4818404A8A00FA8E33 = {
+						DevelopmentTeam = ASEVUMECUS;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
+					};
 					A6B1AD6918404A8A00FA8E33 = {
 						TestTargetID = A6B1AD4818404A8A00FA8E33;
 					};
@@ -478,6 +482,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -499,6 +504,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

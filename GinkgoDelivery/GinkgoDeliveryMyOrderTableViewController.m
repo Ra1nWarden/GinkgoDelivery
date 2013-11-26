@@ -14,6 +14,40 @@
 @end
 
 @implementation GinkgoDeliveryMyOrderTableViewController
+@synthesize query = _query;
+@synthesize orders = _orders;
+
+-(PFQuery *)query {
+    if(! _query) {
+        _query = [PFQuery queryWithClassName:@"Order"];
+    }
+    return _query;
+}
+
+-(NSArray *)orders {
+    if(! _orders) {
+        NSMutableArray * verifiedOrder = [NSMutableArray array];
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        NSMutableArray * localOrders = [[defaults arrayForKey:@"localOrder"] mutableCopy];
+        NSMutableArray * newdefaultarray = [NSMutableArray array];
+        NSArray * onlineOrders = [self.query findObjects];
+        for(id each in localOrders) {
+            BOOL found = NO;
+            for(PFObject * eachOrder in onlineOrders) {
+                if([[eachOrder valueForKey:@"objectId"] isEqualToString: each]) {
+                    found = YES;
+                    [verifiedOrder addObject:eachOrder];
+                    [newdefaultarray addObject:each];
+                    break;
+                }
+            }
+        }
+        [defaults setObject:newdefaultarray forKey:@"localOrder"];
+        [defaults synchronize];
+        _orders = [NSArray arrayWithArray:verifiedOrder];
+    }
+    return _orders;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,60 +77,21 @@
 
 #pragma mark - Table view data source
 
--(void) validate {
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray * array = [[defaults arrayForKey:@"localOrder"] mutableCopy];
-    if(!array)
-        array = [NSMutableArray array];
-    PFQuery * checkKey = [PFQuery queryWithClassName:@"Order"];
-    NSArray * allOrders =[checkKey findObjects];
-    NSMutableArray * newarray = [NSMutableArray array];
-    for(id each in array) {
-        BOOL found = NO;
-        for(PFQuery * eachOrder in allOrders) {
-            if([[eachOrder valueForKey:@"objectId"] isEqualToString: each]) {
-                found = YES;
-                break;
-            }
-        }
-        if(found) {
-            [newarray addObject:each];
-        }
-    }
-    [defaults setObject:newarray forKey:@"localOrder"];
-    [defaults synchronize];
-}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [self validate];
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray * array = [[defaults arrayForKey:@"localOrder"] mutableCopy];
-    if(!array)
-        array = [NSMutableArray array];
-    NSLog(@"Value for the tableViewController %u",[array count]);
-    return [array count];
+    return [self.orders count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self validate];
     static NSString *CellIdentifier = @"MyOrder";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray * array = [[defaults arrayForKey:@"localOrder"] mutableCopy];
-    if(!array)
-        array = [NSMutableArray array];
-    PFQuery * orderQuery = [PFQuery queryWithClassName:@"Order"];
-    NSArray * allOrders = [orderQuery findObjects];
-    if([array count] != 0) {
-        PFObject * currentOrder = [allOrders objectAtIndex:indexPath.row];
-        NSNumber * orderNumber = [currentOrder valueForKey:@"orderNo"];
-        cell.textLabel.text = [orderNumber stringValue];
-    }
+    NSString * textshown = [[[self.orders objectAtIndex:indexPath.row] valueForKey:@"orderNo"] stringValue];
+    cell.textLabel.text = textshown;
     return cell;
 }
 

@@ -11,4 +11,7 @@
 
 @interface GinkgoDeliveryMyOrderTableViewController : UITableViewController
 
+@property (nonatomic, readonly) PFQuery * query;
+@property (nonatomic, readonly) NSArray * orders;
+
 @end

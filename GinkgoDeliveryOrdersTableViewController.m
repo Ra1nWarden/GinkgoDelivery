@@ -76,19 +76,16 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"numberofsection");
     return [self.categories count];
     
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSLog(@"titleforheader");
     return [[self.categories allKeys] objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"NumberofRows");
     NSString * currentCategory = [self tableView:tableView titleForHeaderInSection:section];
     return [[self.categories valueForKey:currentCategory] count];
 }
@@ -96,7 +93,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Drawing cells");
     static NSString *CellIdentifier = @"Dish";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -105,6 +101,7 @@
     PFObject * dish = [[self.categories objectForKey:currentCategory] objectAtIndex:indexPath.row];
     NSString * dishName = [dish valueForKey:@"title"];
     cell.textLabel.text = dishName;
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
     return cell;
 }
 
