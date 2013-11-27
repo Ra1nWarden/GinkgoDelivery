@@ -12,5 +12,7 @@
 @interface GinkgoDeliveryConfirmationViewController : UIViewController
 @property NSString * dish;
 @property NSString * pickuppoint;
+@property NSString * name;
+@property NSString * phoneNo;
 
 @end

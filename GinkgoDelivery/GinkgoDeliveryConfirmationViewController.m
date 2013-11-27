@@ -17,6 +17,8 @@
 
 @synthesize dish = _dish;
 @synthesize pickuppoint = _pickuppoint;
+@synthesize phoneNo = _phoneNo;
+@synthesize name = _name;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,9 +55,17 @@
         order++;
         NSNumber * neworder = [[NSNumber alloc] initWithInt:order];
         PFObject * myOrder = [PFObject objectWithClassName:@"Order"];
+    
         myOrder[@"dish"] = self.dish;
+        NSLog(@"dish Saved!");
         myOrder[@"pickup"] = self.pickuppoint;
+        NSLog(@"pickup Saved!");
         myOrder[@"orderNo"] = neworder;
+        NSLog(@"orderNo Saved!");
+        myOrder[@"name"] = self.name;
+        NSLog(@"name Saved!");
+        myOrder[@"phoneNo"] = self.phoneNo;
+        NSLog(@"phoneNo Saved!");
         [myOrder saveInBackground];
         
         

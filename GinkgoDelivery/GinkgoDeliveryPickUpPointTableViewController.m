@@ -76,7 +76,7 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"Pickup Point to Confirmation"]) {
+    if([segue.identifier isEqualToString:@"Pickup Point to Customer Info"]) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedRowIndex];
         [segue.destinationViewController setPickuppoint: cell.textLabel.text];
