@@ -38,7 +38,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -46,6 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.phoneNoField.delegate = self;
     self.nameField.delegate = self;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];

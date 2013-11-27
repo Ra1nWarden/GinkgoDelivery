@@ -15,4 +15,5 @@
 @property(nonatomic, readonly) NSArray * products;
 @property(nonatomic) NSMutableDictionary * categories;
 
+
 @end

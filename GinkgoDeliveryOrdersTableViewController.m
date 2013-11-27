@@ -19,6 +19,7 @@
 @synthesize products = _products;
 @synthesize categories = _categories;
 
+
 - (PFQuery *)query {
     if(! _query)
         _query = [PFQuery queryWithClassName:@"_Product"];
@@ -51,7 +52,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        
+      
     }
     return self;
 }
@@ -59,7 +60,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

@@ -15,4 +15,5 @@
 @property(nonatomic, readonly) PFQuery * query;
 @property(nonatomic, readonly) NSArray * places;
 
+
 @end

@@ -19,7 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+       
     }
     return self;
 }
@@ -28,6 +28,7 @@
 {
     
     [super viewDidLoad];
+  
     PFQuery * query = [PFQuery queryWithClassName:@"Order"];
     NSArray * array = [query findObjects];
     NSString * dishName = [[NSString alloc] init];
