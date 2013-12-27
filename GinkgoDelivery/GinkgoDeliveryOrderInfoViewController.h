@@ -11,5 +11,8 @@
 
 @interface GinkgoDeliveryOrderInfoViewController : UIViewController
 @property NSNumber * orderNumber;
+@property IBOutlet UILabel * dishLabel;
+@property IBOutlet UILabel * orderNumberLabel;
+@property IBOutlet UILabel * placeLabel;
 
 @end

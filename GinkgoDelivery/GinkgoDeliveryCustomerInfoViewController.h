@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface GinkgoDeliveryCustomerInfoViewController : UIViewController <UITextFieldDelegate>
-@property NSString * pickuppoint;
-@property NSString * dish;
-@property (nonatomic) UITextField * nameField;
-@property (nonatomic) UITextField * phoneNoField;
+@interface GinkgoDeliveryCustomerInfoViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@property (nonatomic) IBOutlet UITextField * nameField;
+@property (nonatomic) IBOutlet UITextField * phoneNoField;
+@property (weak, nonatomic) IBOutlet UITextField *addressField;
+@property (weak, nonatomic) IBOutlet UIPickerView *lunchView;
+@property (weak, nonatomic) IBOutlet UILabel *pickUpLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
+@property (nonatomic) NSArray * lunchPickup;
+@property (nonatomic) NSString * method;
 
 @end

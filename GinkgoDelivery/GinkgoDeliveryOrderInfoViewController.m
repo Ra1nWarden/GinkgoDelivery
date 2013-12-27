@@ -14,6 +14,9 @@
 @implementation GinkgoDeliveryOrderInfoViewController
 
 @synthesize orderNumber = _orderNumber;
+@synthesize orderNumberLabel = _orderNumberLabel;
+@synthesize dishLabel = _dishLabel;
+@synthesize placeLabel = _placeLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,15 +43,12 @@
             break;
         }
     }
-    UILabel * orderlabel = (UILabel *) [self.view viewWithTag: 1];
-    orderlabel.text = [self.orderNumber stringValue];
-    orderlabel.adjustsFontSizeToFitWidth = YES;
-    UILabel * dishlabel = (UILabel *) [self.view viewWithTag: 2];
-    dishlabel.text = dishName;
-    dishlabel.adjustsFontSizeToFitWidth = YES;
-    UILabel * placelabel = (UILabel *) [self.view viewWithTag: 3];
-    placelabel.text = pickUp;
-    placelabel.adjustsFontSizeToFitWidth = YES;
+    self.orderNumberLabel.text = [self.orderNumber stringValue];
+    self.orderNumberLabel.adjustsFontSizeToFitWidth = YES;
+    self.dishLabel.text = dishName;
+    self.dishLabel.adjustsFontSizeToFitWidth = YES;
+    self.placeLabel.text = pickUp;
+    self.placeLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)didReceiveMemoryWarning

@@ -19,6 +19,8 @@
 @synthesize pickuppoint = _pickuppoint;
 @synthesize phoneNo = _phoneNo;
 @synthesize name = _name;
+@synthesize dishLabel = _dishLabel;
+@synthesize placeLabel = _placeLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,12 +37,12 @@
     [super viewDidLoad];
 
 	// Do any additional setup after loading the view.
-    UILabel * dishlabel = (UILabel *)[self.view viewWithTag:1];
-    dishlabel.text = self.dish;
-    dishlabel.adjustsFontSizeToFitWidth = YES;
-    UILabel * placelabel = (UILabel *)[self.view viewWithTag:2];
-    placelabel.text = self.pickuppoint;
-    placelabel.adjustsFontSizeToFitWidth = YES;
+
+    self.dishLabel.text = self.dish;
+    self.dishLabel.adjustsFontSizeToFitWidth = YES;
+  
+    self.placeLabel.text = self.pickuppoint;
+    self.placeLabel.adjustsFontSizeToFitWidth = YES;
     
 }
 
@@ -71,11 +73,11 @@
         [myOrder saveInBackground];
         
         
-        query = [PFQuery queryWithClassName:@"_Product"];
+        query = [PFQuery queryWithClassName:@"Menu"];
         NSArray * products = [query findObjects];
         for(PFObject * each in products) {
-            if([[each valueForKey:@"title"] isEqualToString:self.dish]) {
-                [each incrementKey:@"order"];
+            if([[each valueForKey:@"Name"] isEqualToString:self.dish]) {
+                [each incrementKey:@"Orders"];
                 [each saveInBackground];
                 break;
             }

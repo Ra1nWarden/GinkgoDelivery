@@ -89,7 +89,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MyOrder";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
     NSString * textshown = [[[self.orders objectAtIndex:indexPath.row] valueForKey:@"orderNo"] stringValue];
@@ -101,7 +101,7 @@
     if([segue.identifier isEqualToString:@"Order Info"]) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedRowIndex];
-        NSNumber * orderNumer = [NSNumber numberWithInt:[cell.textLabel.text integerValue]];
+        NSNumber * orderNumer = [NSNumber numberWithInt:[cell.textLabel.text intValue]];
         [segue.destinationViewController setOrderNumber: orderNumer];
     }
 }

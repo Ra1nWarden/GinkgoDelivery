@@ -14,5 +14,7 @@
 @property NSString * pickuppoint;
 @property NSString * name;
 @property NSString * phoneNo;
+@property IBOutlet UILabel * dishLabel;
+@property IBOutlet UILabel * placeLabel;
 
 @end
