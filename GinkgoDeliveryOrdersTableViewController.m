@@ -7,7 +7,7 @@
 //
 
 #import "GinkgoDeliveryOrdersTableViewController.h"
-#import "GinkgoDeliveryPickUpPointTableViewController.h"
+#import "GinkgoDeliveryDishInfoViewController.h"
 
 @interface GinkgoDeliveryOrdersTableViewController () 
 
@@ -182,21 +182,20 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"Dish to Pickup Point" sender:tableView];
+    [self performSegueWithIdentifier:@"dishInfo" sender:tableView];
 }
 
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"Dish to Pickup Point"]) {
-        PFObject * selectedObject;
+    if([segue.identifier isEqualToString:@"dishInfo"]) {
         NSIndexPath * indexPath = [sender indexPathForSelectedRow];
         NSString * categoryName = [self tableView:sender titleForHeaderInSection:indexPath.section];
+        PFObject * selectedObject;
         if(sender == self.searchDisplayController.searchResultsTableView)
             selectedObject = [[self.filteredResults objectForKey:categoryName] objectAtIndex:indexPath.row];
         else
             selectedObject = [[self.categories objectForKey:categoryName] objectAtIndex:indexPath.row];
-
-//        [segue.destinationViewController setDish: cell.textLabel.text];
+        [segue.destinationViewController setDish: selectedObject];
     }
 }
 

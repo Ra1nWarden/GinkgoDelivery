@@ -113,11 +113,49 @@
                     <navigationItem key="navigationItem" title="Select your dish" id="bYF-DC-GUJ"/>
                     <connections>
                         <outlet property="dishSearch" destination="Pvq-Ij-Iol" id="S1H-1j-tS6"/>
+                        <segue destination="qFO-tM-AHg" kind="push" identifier="dishInfo" id="CWR-9S-Cv1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRI-i2-vBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989" y="-32"/>
+            <point key="canvasLocation" x="1008" y="-41"/>
+        </scene>
+        <!--Ginkgo Delivery Dish Info View Controller-->
+        <scene sceneID="gAs-Tv-pf8">
+            <objects>
+                <viewController id="qFO-tM-AHg" customClass="GinkgoDeliveryDishInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fOD-in-XF8"/>
+                        <viewControllerLayoutGuide type="bottom" id="srb-lN-kFI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oHg-Dw-fob">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Mi-s1-e9s">
+                                <rect key="frame" x="28" y="80" width="264" height="208"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRa-Kn-vfL">
+                                <rect key="frame" x="40" y="315" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uyF-OG-H7X"/>
+                    <connections>
+                        <outlet property="descriptionView" destination="LRa-Kn-vfL" id="ohP-bf-yod"/>
+                        <outlet property="imageView" destination="4Mi-s1-e9s" id="MvO-8n-N0R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-qV-in0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1362" y="-49"/>
         </scene>
         <!--Ginkgo Delivery My Order Table View Controller - My Orders-->
         <scene sceneID="Byi-ka-FNd">
@@ -160,45 +198,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9TV-S7-KEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="674" y="689"/>
-        </scene>
-        <!--Ginkgo Delivery Pick Up Point Table View Controller - Select your pick-up point-->
-        <scene sceneID="g4t-gk-hYS">
-            <objects>
-                <tableViewController id="vfR-4a-ZhE" customClass="GinkgoDeliveryPickUpPointTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="e6s-nb-hYX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Places" textLabel="ti5-ml-ZCO" style="IBUITableViewCellStyleDefault" id="81U-27-xM2">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="81U-27-xM2" id="W4l-0P-yN6">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ti5-ml-ZCO">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="vfR-4a-ZhE" id="6Zt-SI-sUg"/>
-                            <outlet property="delegate" destination="vfR-4a-ZhE" id="krY-K0-8Ze"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Select your pick-up point" id="Vsg-tk-SNk"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nj5-Ar-oXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1422" y="-15"/>
         </scene>
         <!--Ginkgo Delivery Customer Info View Controller - Customer Info-->
         <scene sceneID="v8B-N2-h39">

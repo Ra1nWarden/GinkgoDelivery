@@ -142,7 +142,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"goToMenu"]) {
-        self.title = @"Back";
         [segue.destinationViewController setMethod:self.method];
     }
 }
