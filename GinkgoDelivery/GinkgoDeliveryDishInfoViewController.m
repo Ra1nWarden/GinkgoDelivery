@@ -46,9 +46,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIBarButtonItem * backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationItem setBackBarButtonItem:backButton];
 	// Do any additional setup after loading the view.
+    self.title = [self.dish valueForKey:@"Name"];
     PFFile * imgFile = [self.dishImage valueForKey:@"picture"];
-//    self.imageView.image = [UIImage imageWithData:[imgFile getData]];
     [imgFile getDataInBackgroundWithBlock: ^(NSData * data, NSError * error) {
         if(! error)
             self.imageView.image = [UIImage imageWithData:data];

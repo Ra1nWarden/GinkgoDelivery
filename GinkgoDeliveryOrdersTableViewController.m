@@ -73,12 +73,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem * backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationItem setBackBarButtonItem:backButton];
     self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.dishSearch contentsController:self];
     self.searchDisplayController.delegate = self;
     self.searchDisplayController.searchResultsDataSource = self;
