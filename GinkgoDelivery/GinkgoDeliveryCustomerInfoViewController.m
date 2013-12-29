@@ -157,7 +157,6 @@
             name = nil;
         [defaults setObject:name forKey:@"Name"];
         [defaults synchronize];
-        NSLog(@"set name %@", [defaults objectForKey:@"Name"]);
     }
     if(textField.tag == 2) {
         phoneNo = textField.text;
@@ -165,7 +164,6 @@
             phoneNo = nil;
         [defaults setObject:phoneNo forKey:@"PhoneNo"];
         [defaults synchronize];
-        NSLog(@"set phone number %@", [defaults objectForKey:@"PhoneNo"]);
     }
     if(textField.tag == 3) {
         NSString * streetTemp = textField.text;
@@ -250,14 +248,20 @@
     NSInteger methodNo = [self.segControl selectedSegmentIndex];
     BOOL success = NO;
     if(name && phoneNo) {
-        NSLog(@"Phone number and name present!");
-        if(methodNo == 0 || methodNo == 2)
+        if(methodNo == 0) {
             success = YES;
+            self.method = @"PickUp";
+        }
+        else if(methodNo == 2) {
+            success = YES;
+            self.method = @"Lunch";
+        }
         else if(methodNo == 1) {
             NSMutableDictionary * address = [defaults objectForKey:@"Address"];
-            NSLog(@"count is %d", [address count]);
-            if([address count] == 4)
+            if([address count] == 4) {
                 success = YES;
+                self.method = @"Delivery";
+            }
         }
     }
     if(success)
@@ -295,7 +299,6 @@
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
-        NSLog(@"reached here!");
         [self.deliveryForm scrollRectToVisible:activeField.frame animated:YES];
     }
     }

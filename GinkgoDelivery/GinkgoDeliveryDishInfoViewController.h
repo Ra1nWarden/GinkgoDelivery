@@ -11,10 +11,15 @@
 
 @interface GinkgoDeliveryDishInfoViewController : UIViewController
 
+@property (nonatomic) NSString * method;
+@property (nonatomic) double price;
 @property (nonatomic) PFObject * dish;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionView;
 @property (nonatomic) PFQuery * query;
 @property (nonatomic) PFObject * dishImage;
+@property (weak, nonatomic) IBOutlet UIStepper *quanStep;
+@property (weak, nonatomic) IBOutlet UILabel *quanLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @end

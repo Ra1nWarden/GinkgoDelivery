@@ -73,6 +73,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"method is %@", self.method);
     UIBarButtonItem * backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationItem setBackBarButtonItem:backButton];
     self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.dishSearch contentsController:self];
@@ -191,6 +192,7 @@
             selectedObject = [[self.filteredResults objectForKey:categoryName] objectAtIndex:indexPath.row];
         else
             selectedObject = [[self.categories objectForKey:categoryName] objectAtIndex:indexPath.row];
+        [segue.destinationViewController setMethod:self.method];
         [segue.destinationViewController setDish: selectedObject];
     }
 }

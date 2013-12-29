@@ -19,6 +19,11 @@
 @synthesize descriptionView;
 @synthesize query = _query;
 @synthesize dishImage = _dishImage;
+@synthesize quanStep;
+@synthesize quanLabel;
+@synthesize method;
+@synthesize price;
+
 
 - (PFQuery *)query {
     if(!_query)
@@ -57,6 +62,23 @@
         [self.imageView setNeedsDisplay];
     }];
     self.descriptionView.text = [self.dish valueForKey:@"Description"];
+    self.quanStep.minimumValue = 1;
+    self.quanStep.stepValue = 1;
+    self.quanStep.value = 1;
+    NSInteger quan = self.quanStep.value;
+    [self.quanLabel setText:[NSString stringWithFormat:@"%d", quan]];
+    [self.quanLabel setTextAlignment:NSTextAlignmentCenter];
+    if([self.method isEqualToString:@"Lunch"])
+        price = 6.00;
+    else
+        price = [[self.dish valueForKey:@"Price"] doubleValue];
+    [self.priceLabel setText:[NSString stringWithFormat:@"$ %.2f", (self.price * self.quanStep.value)]];
+}
+- (IBAction)valueChanged:(id)sender {
+    NSInteger quan = self.quanStep.value;
+    [self.quanLabel setText:[NSString stringWithFormat:@"%d", quan]];
+    [self.quanLabel setNeedsDisplay];
+    [self.priceLabel setText:[NSString stringWithFormat:@"$ %.2f", (self.price * self.quanStep.value)]];
 }
 
 - (void)didReceiveMemoryWarning
