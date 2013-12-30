@@ -169,28 +169,31 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return (indexPath.section == 0);
 }
-*/
 
-/*
-// Override to support editing the table view.
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.section == 0) {
+        NSMutableArray * updatedOrder = [self.orders mutableCopy];
+        [updatedOrder removeObjectAtIndex:indexPath.row];
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        if([self.method isEqualToString:@"Lunch"])
+           [defaults setObject:updatedOrder forKey:@"LunchOrder"];
+        else if([self.method isEqualToString:@"Delivery"])
+            [defaults setObject:updatedOrder forKey:@"DeliveryOrder"];
+        else if([self.method isEqualToString:@"Lunch"])
+            [defaults setObject:updatedOrder forKey:@"DeliveryOrder"];
+        [defaults synchronize];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        NSIndexSet * pricesec = [NSIndexSet indexSetWithIndex:1];
+        [tableView reloadSections:pricesec withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
-*/
 
 
 
