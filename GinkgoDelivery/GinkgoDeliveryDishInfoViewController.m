@@ -80,6 +80,60 @@
     [self.quanLabel setNeedsDisplay];
     [self.priceLabel setText:[NSString stringWithFormat:@"$ %.2f", (self.price * self.quanStep.value)]];
 }
+- (IBAction)addCart:(id)sender {
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber * count = [[NSNumber alloc] initWithDouble:self.quanStep.value];
+    NSMutableArray * currentOrder;
+    if([self.method isEqualToString:@"Lunch"]) {
+        currentOrder = [[defaults objectForKey:@"LunchOrder"] mutableCopy];
+        if(!currentOrder)
+            currentOrder = [[NSMutableArray alloc] init];
+        [self addObjectId:self.dish withCount:count intoArray:currentOrder];
+        [defaults setObject:currentOrder forKey:@"LunchOrder"];
+        [defaults synchronize];
+       
+    }
+    else if([self.method isEqualToString:@"PickUp"]) {
+        currentOrder = [[defaults objectForKey:@"PickUpOrder"] mutableCopy];
+        if(!currentOrder)
+            currentOrder = [[NSMutableArray alloc] init];
+        [self addObjectId:self.dish withCount:count intoArray:currentOrder];
+        [defaults setObject:currentOrder forKey:@"PickUpOrder"];
+        [defaults synchronize];
+    }
+    else if([self.method isEqualToString:@"Delivery"]) {
+        currentOrder = [[defaults objectForKey:@"DeliveryOrder"] mutableCopy];
+        if(!currentOrder)
+            currentOrder = [[NSMutableArray alloc] init];
+        [self addObjectId:self.dish withCount:count intoArray:currentOrder];
+        [defaults setObject:currentOrder forKey:@"DeliveryOrder"];
+        [defaults synchronize];
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Dish added to cart!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)addObjectId:(PFObject*)object withCount:(NSNumber*)objectCount intoArray:(NSMutableArray*)myOrder {
+    BOOL contains = NO;
+    for(NSMutableDictionary * each in myOrder) {
+        if([[each objectForKey:@"Name"] isEqualToString:[object valueForKey:@"Name"]]) {
+            contains = YES;
+            NSNumber * finalCount = [[NSNumber alloc] initWithInt:([[each objectForKey:@"Quantity"] intValue] + [objectCount intValue])];
+            [each setObject:finalCount forKey:@"Quantity"];
+            break;
+        }
+    }
+    if(!contains) {
+        NSMutableDictionary * newOrder = [[NSMutableDictionary alloc] init];
+        [newOrder setObject:[self.dish valueForKey:@"Name"] forKey:@"Name"];
+        [newOrder setObject:[self.dish valueForKey:@"objectId"] forKey:@"ObjectId"];
+        [newOrder setObject:[self.dish valueForKey:@"Price"] forKey:@"Price"];
+        [newOrder setObject:objectCount forKey:@"Quantity"];
+        [myOrder addObject:newOrder];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

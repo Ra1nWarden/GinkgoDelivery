@@ -195,6 +195,9 @@
         [segue.destinationViewController setMethod:self.method];
         [segue.destinationViewController setDish: selectedObject];
     }
+    if([segue.identifier isEqualToString:@"showCart"]) {
+        [segue.destinationViewController setMethod:self.method];
+    }
 }
 
 
