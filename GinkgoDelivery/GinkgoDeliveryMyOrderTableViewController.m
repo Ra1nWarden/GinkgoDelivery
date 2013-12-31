@@ -7,6 +7,7 @@
 //
 
 #import "GinkgoDeliveryMyOrderTableViewController.h"
+#import "GinkgoDeliverySingleOrderTableViewController.h"
 
 @interface GinkgoDeliveryMyOrderTableViewController ()
 
@@ -21,21 +22,17 @@
         NSMutableArray * tempConfirmedOrders = [[NSMutableArray alloc] init];
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         NSArray * storedOrders = [defaults objectForKey:@"localOrder"];
-        NSLog(@"local order size is %d", [storedOrders count]);
         NSMutableArray * updatedLocalOrder = [[NSMutableArray alloc] init];
         if(!storedOrders)
             storedOrders = [[NSMutableArray alloc] init];
         PFQuery * query = [PFQuery queryWithClassName:@"Order"];
         for(NSString * eachId in storedOrders) {
-            NSLog(@"printing id %@", eachId);
             PFObject * eachOnlineOrder = [query getObjectWithId:eachId];
             if(eachOnlineOrder) {
-                NSLog(@"not nil~");
                 [tempConfirmedOrders addObject:eachOnlineOrder];
                 [updatedLocalOrder addObject:eachId];
             }
         }
-        NSLog(@"retrieved object count is %d", [tempConfirmedOrders count]);
         [defaults setObject:updatedLocalOrder forKey:@"localOrder"];
         [defaults synchronize];
         _confirmedOrders = tempConfirmedOrders;
@@ -103,17 +100,20 @@
     return cell;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"singleOrder" sender:indexPath];
 }
 
- */
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"singleOrder"]) {
+        NSIndexPath * selectedRow = (NSIndexPath *) sender;
+        PFObject * selectedOrder = [self.confirmedOrders objectAtIndex:selectedRow.row];
+        [segue.destinationViewController setOrderObject:selectedOrder];
+        UITableViewCell * selectedCell = [self.tableView cellForRowAtIndexPath:selectedRow];
+        [segue.destinationViewController setViewTitle:selectedCell.textLabel.text];
+    }
+}
 
 @end

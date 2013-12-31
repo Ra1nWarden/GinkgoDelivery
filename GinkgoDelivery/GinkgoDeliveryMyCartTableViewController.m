@@ -125,7 +125,7 @@
         NSMutableDictionary * currentCellOrder = [self.orders objectAtIndex:indexPath.row];
         cell.textLabel.text = [currentCellOrder objectForKey:@"Name"];
         cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",[[currentCellOrder objectForKey:@"Quantity" ] integerValue]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",[[currentCellOrder objectForKey:@"Quantity" ] intValue]];
         UIStepper * step = (UIStepper *)[cell viewWithTag:10];
         step.minimumValue = 1;
         step.stepValue = 1;
@@ -245,7 +245,6 @@
                         if(!localOrder)
                             localOrder = [[NSMutableArray alloc] init];
                         [localOrder addObject:objectId];
-                        NSLog(@"updating size is %d", [localOrder count]);
                         [defauls setObject:localOrder forKey:@"localOrder"];
                         [defauls synchronize];
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Submitted!" message:[NSString stringWithFormat:@"Your order number is %d. \n Verification code is %@", storedCount, objectId] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
