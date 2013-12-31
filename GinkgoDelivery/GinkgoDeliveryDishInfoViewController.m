@@ -116,15 +116,21 @@
 
 -(void)addObjectId:(PFObject*)object withCount:(NSNumber*)objectCount intoArray:(NSMutableArray*)myOrder {
     BOOL contains = NO;
-    for(NSMutableDictionary * each in myOrder) {
+    int containedIndex = -1;
+    NSMutableDictionary * replacedEntry = [[NSMutableDictionary alloc] init];
+    for(NSDictionary * each in myOrder) {
         if([[each objectForKey:@"Name"] isEqualToString:[object valueForKey:@"Name"]]) {
             contains = YES;
             NSNumber * finalCount = [[NSNumber alloc] initWithInt:([[each objectForKey:@"Quantity"] intValue] + [objectCount intValue])];
-            [each setObject:finalCount forKey:@"Quantity"];
+            replacedEntry = [each mutableCopy];
+            [replacedEntry setObject:finalCount forKey:@"Quantity"];
+            containedIndex = [myOrder indexOfObject:each];
             break;
         }
     }
-    if(!contains) {
+    if(contains)
+       [myOrder replaceObjectAtIndex:containedIndex withObject:replacedEntry];
+    else {
         NSMutableDictionary * newOrder = [[NSMutableDictionary alloc] init];
         [newOrder setObject:[self.dish valueForKey:@"Name"] forKey:@"Name"];
         [newOrder setObject:[self.dish valueForKey:@"objectId"] forKey:@"ObjectId"];

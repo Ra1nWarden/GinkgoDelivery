@@ -2,7 +2,7 @@
 //  GinkgoDeliveryMyOrderTableViewController.h
 //  GinkgoDelivery
 //
-//  Created by Zihao Wang on 23/11/13.
+//  Created by Zihao Wang on 30/12/13.
 //  Copyright (c) 2013 Zihao Wang. All rights reserved.
 //
 
@@ -11,7 +11,6 @@
 
 @interface GinkgoDeliveryMyOrderTableViewController : UITableViewController
 
-@property (nonatomic, readonly) PFQuery * query;
-@property (nonatomic, readonly) NSArray * orders;
+@property (nonatomic) NSArray * confirmedOrders;
 
 @end

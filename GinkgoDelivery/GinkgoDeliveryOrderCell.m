@@ -22,9 +22,15 @@
 -(void)layoutSubviews {
     [super layoutSubviews];  //The default implementation of the layoutSubviews
     
-    CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.size.width = 180;
-    self.textLabel.frame = textLabelFrame;
+    self.textLabel.frame = CGRectMake(15, 11, 180, 21);
+    self.textLabel.textAlignment = NSTextAlignmentLeft;
+    self.textLabel.adjustsFontSizeToFitWidth = YES;
+    
+    CGRect detailTextLabelFrame = CGRectMake(280, 11, 40, 21);
+    self.detailTextLabel.frame = detailTextLabelFrame;
+    self.detailTextLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [self sizeToFit];
 
 }
 

@@ -124,7 +124,7 @@
         }
         NSMutableDictionary * currentCellOrder = [self.orders objectAtIndex:indexPath.row];
         cell.textLabel.text = [currentCellOrder objectForKey:@"Name"];
-        cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",[[currentCellOrder objectForKey:@"Quantity" ] integerValue]];
         UIStepper * step = (UIStepper *)[cell viewWithTag:10];
         step.minimumValue = 1;
@@ -146,16 +146,16 @@
         else {
             for(NSMutableDictionary * each in self.orders) {
                 total = [[NSNumber alloc] initWithDouble:([total doubleValue] + ([[each objectForKey:@"Quantity"] doubleValue] * [[each objectForKey:@"Price"] doubleValue]))];
-                NSLog(@"Price! %.2f",[total doubleValue]);
             }
         }
+        self.totalFee = total;
         if(indexPath.row == 0) {
             cell.textLabel.text = @"Subtotal";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [total doubleValue]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [self.totalFee doubleValue]];
         }
         if(indexPath.row == 1) {
             cell.textLabel.text = @"Tax";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [total doubleValue] * 0.04];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [self.totalFee doubleValue] * 0.04];
         }
         if(indexPath.row == 2) {
             cell.textLabel.text = @"Delivery Fee";
@@ -163,7 +163,7 @@
         }
         if(indexPath.row == 3) {
             cell.textLabel.text = @"Total";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", ([total doubleValue] * 1.04 + [self.deliveryFee doubleValue])];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", ([self.totalFee doubleValue] * 1.04 + [self.deliveryFee doubleValue])];
         }
     }
     return cell;
@@ -186,15 +186,78 @@
            [defaults setObject:updatedOrder forKey:@"LunchOrder"];
         else if([self.method isEqualToString:@"Delivery"])
             [defaults setObject:updatedOrder forKey:@"DeliveryOrder"];
-        else if([self.method isEqualToString:@"Lunch"])
-            [defaults setObject:updatedOrder forKey:@"DeliveryOrder"];
+        else if([self.method isEqualToString:@"PickUp"])
+            [defaults setObject:updatedOrder forKey:@"PickUpOrder"];
         [defaults synchronize];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        NSIndexSet * pricesec = [NSIndexSet indexSetWithIndex:1];
-        [tableView reloadSections:pricesec withRowAnimation:UITableViewRowAnimationNone];
+        [tableView reloadData];
     }
 }
 
+- (IBAction)submitOrder:(id)sender {
+
+    PFObject * newOrder = [PFObject objectWithClassName:@"Order"];
+    NSUserDefaults * defauls = [NSUserDefaults standardUserDefaults];
+    
+    newOrder[@"name"] = [defauls objectForKey:@"Name"];
+    newOrder[@"phoneNo"] = [defauls objectForKey:@"PhoneNo"];
+    newOrder[@"method"] = self.method;
+    newOrder[@"status"] = @"Pending";
+    newOrder[@"salePrice"] = self.totalFee;
+    if([self.method isEqualToString:@"Delivery"]) {
+        NSDictionary * detailAddress = [defauls objectForKey:@"Address"];
+        NSMutableString * address = [[detailAddress objectForKey:@"address"] mutableCopy];
+        [address appendString:@", apt/suite "];
+        [address appendString:[detailAddress objectForKey:@"apt"]];
+        [address appendString:@"\n"];
+        [address appendString:[detailAddress objectForKey:@"city"]];
+        [address appendString:@", "];
+        [address appendString:[detailAddress objectForKey:@"state"]];
+        newOrder[@"address"] = address;
+    }
+    else if([self.method isEqualToString:@"Lunch"])
+        newOrder[@"address"] = [defauls objectForKey:@"LunchAddress"];
+    else if([self.method isEqualToString:@"PickUp"])
+        newOrder[@"address"] = @"N/A";
+    NSString * specilIns = [defauls objectForKey:@"specialIns"];
+    if(!specilIns)
+        specilIns = @"none";
+    newOrder[@"specialIns"] = specilIns;
+    newOrder[@"order"] = self.orders;
+    PFQuery * query = [PFQuery queryWithClassName:@"Order"];
+    int storedCount = [query countObjects];
+    storedCount++;
+    newOrder[@"orderNo"] = [NSNumber numberWithInt:storedCount];
+    [newOrder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error){
+        if(succeeded) {
+            if([self.method isEqualToString:@"Lunch"])
+               [defauls removeObjectForKey:@"LunchOrder"];
+            else if([self.method isEqualToString:@"Delivery"])
+                [defauls removeObjectForKey:@"DeliveryOrder"];
+            else if([self.method isEqualToString:@"PickUp"])
+                [defauls removeObjectForKey:@"PickUpOrder"];
+            [defauls synchronize];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                for(PFObject * each in objects) {
+                    if([[each objectForKey:@"orderNo"] isEqualToNumber:[NSNumber numberWithInt:storedCount]]) {
+
+                        NSString * objectId = [each valueForKey:@"objectId"];
+                        NSMutableArray * localOrder = [[defauls objectForKey:@"localOrder"] mutableCopy];
+                        if(!localOrder)
+                            localOrder = [[NSMutableArray alloc] init];
+                        [localOrder addObject:objectId];
+                        NSLog(@"updating size is %d", [localOrder count]);
+                        [defauls setObject:localOrder forKey:@"localOrder"];
+                        [defauls synchronize];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Submitted!" message:[NSString stringWithFormat:@"Your order number is %d. \n Verification code is %@", storedCount, objectId] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                        [alert show];
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                        break;
+                    }
+                }
+            }];
+        }
+    }];
+}
 
 
 

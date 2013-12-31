@@ -19,9 +19,6 @@
 		A62EE07918408FC200657015 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07818408FC200657015 /* QuartzCore.framework */; };
 		A62EE07B18408FCC00657015 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07A18408FCC00657015 /* Security.framework */; };
 		A62EE07F18408FE000657015 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07E18408FE000657015 /* SystemConfiguration.framework */; };
-		A62EE0821840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE0811840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m */; };
-		A62EE0881840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE0871840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m */; };
-		A62EE08B1841699A00657015 /* GinkgoDeliveryOrderInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE08A1841699A00657015 /* GinkgoDeliveryOrderInfoViewController.m */; };
 		A65FFD9F184184750097AEDC /* GinkgoDeliveryHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65FFD9E184184750097AEDC /* GinkgoDeliveryHomeViewController.m */; };
 		A69E9771184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9770184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.m */; };
 		A69F1A4F1870DE16009BF564 /* GinkgoDeliveryMyCartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69F1A4E1870DE16009BF564 /* GinkgoDeliveryMyCartTableViewController.m */; };
@@ -40,6 +37,7 @@
 		A6B1AD6E18404A8A00FA8E33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B1AD5018404A8A00FA8E33 /* UIKit.framework */; };
 		A6B1AD7618404A8A00FA8E33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6B1AD7418404A8A00FA8E33 /* InfoPlist.strings */; };
 		A6B1AD7818404A8A00FA8E33 /* GinkgoDeliveryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1AD7718404A8A00FA8E33 /* GinkgoDeliveryTests.m */; };
+		A6EE36621872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EE36611872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,12 +64,6 @@
 		A62EE07818408FC200657015 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A62EE07A18408FCC00657015 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A62EE07E18408FE000657015 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A62EE0801840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryMyOrderTableViewController.h; sourceTree = "<group>"; };
-		A62EE0811840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryMyOrderTableViewController.m; sourceTree = "<group>"; };
-		A62EE0861840CE3100657015 /* GinkgoDeliveryConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryConfirmationViewController.h; sourceTree = "<group>"; };
-		A62EE0871840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryConfirmationViewController.m; sourceTree = "<group>"; };
-		A62EE0891841699A00657015 /* GinkgoDeliveryOrderInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryOrderInfoViewController.h; sourceTree = "<group>"; };
-		A62EE08A1841699A00657015 /* GinkgoDeliveryOrderInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryOrderInfoViewController.m; sourceTree = "<group>"; };
 		A65FFD9D184184750097AEDC /* GinkgoDeliveryHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryHomeViewController.h; sourceTree = SOURCE_ROOT; };
 		A65FFD9E184184750097AEDC /* GinkgoDeliveryHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryHomeViewController.m; sourceTree = SOURCE_ROOT; };
 		A69E976F184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryCustomerInfoViewController.h; sourceTree = "<group>"; };
@@ -99,6 +91,8 @@
 		A6B1AD7318404A8A00FA8E33 /* GinkgoDeliveryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GinkgoDeliveryTests-Info.plist"; sourceTree = "<group>"; };
 		A6B1AD7518404A8A00FA8E33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A6B1AD7718404A8A00FA8E33 /* GinkgoDeliveryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryTests.m; sourceTree = "<group>"; };
+		A6EE36601872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryMyOrderTableViewController.h; sourceTree = "<group>"; };
+		A6EE36611872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryMyOrderTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +187,8 @@
 				A6B1AD5B18404A8A00FA8E33 /* GinkgoDeliveryAppDelegate.h */,
 				A6B1AD5C18404A8A00FA8E33 /* GinkgoDeliveryAppDelegate.m */,
 				A6B1AD5E18404A8A00FA8E33 /* Main.storyboard */,
+				A6EE36601872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.h */,
+				A6EE36611872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.m */,
 				A69F1A4D1870DE16009BF564 /* GinkgoDeliveryMyCartTableViewController.h */,
 				A69F1A4E1870DE16009BF564 /* GinkgoDeliveryMyCartTableViewController.m */,
 				A69F1A5318711A0F009BF564 /* GinkgoDeliveryOrderCell.h */,
@@ -201,12 +197,6 @@
 				A6A7DB7B186D97E9000529CF /* GinkgoDeliveryDishInfoViewController.m */,
 				A69E976F184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.h */,
 				A69E9770184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.m */,
-				A62EE0891841699A00657015 /* GinkgoDeliveryOrderInfoViewController.h */,
-				A62EE08A1841699A00657015 /* GinkgoDeliveryOrderInfoViewController.m */,
-				A62EE0861840CE3100657015 /* GinkgoDeliveryConfirmationViewController.h */,
-				A62EE0871840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m */,
-				A62EE0801840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.h */,
-				A62EE0811840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m */,
 				A6B1AD6418404A8A00FA8E33 /* Images.xcassets */,
 				A6B1AD5318404A8A00FA8E33 /* Supporting Files */,
 			);
@@ -352,14 +342,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A69F1A4F1870DE16009BF564 /* GinkgoDeliveryMyCartTableViewController.m in Sources */,
+				A6EE36621872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.m in Sources */,
 				A65FFD9F184184750097AEDC /* GinkgoDeliveryHomeViewController.m in Sources */,
-				A62EE0881840CE3100657015 /* GinkgoDeliveryConfirmationViewController.m in Sources */,
 				A62EE06B1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m in Sources */,
 				A6B1AD5918404A8A00FA8E33 /* main.m in Sources */,
 				A69E9771184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.m in Sources */,
-				A62EE0821840A00100657015 /* GinkgoDeliveryMyOrderTableViewController.m in Sources */,
 				A6A7DB7C186D97E9000529CF /* GinkgoDeliveryDishInfoViewController.m in Sources */,
-				A62EE08B1841699A00657015 /* GinkgoDeliveryOrderInfoViewController.m in Sources */,
 				A6B1AD5D18404A8A00FA8E33 /* GinkgoDeliveryAppDelegate.m in Sources */,
 				A69F1A5518711A0F009BF564 /* GinkgoDeliveryOrderCell.m in Sources */,
 			);

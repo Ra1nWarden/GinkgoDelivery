@@ -7,7 +7,6 @@
 //
 
 #import "GinkgoDeliveryCustomerInfoViewController.h"
-#import "GinkgoDeliveryConfirmationViewController.h"
 
 @interface GinkgoDeliveryCustomerInfoViewController ()
 
@@ -139,13 +138,6 @@
     return [[self.lunchPickup objectAtIndex:row] valueForKey:@"place"];
 }
 
-- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSString * address = [[self.lunchPickup objectAtIndex:row] valueForKey:@"place"];
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:address forKey:@"LunchAddress"];
-}
-
-
 - (void) textFieldDidEndEditing:(UITextField *)textField {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSString * name = [defaults objectForKey:@"Name"];
@@ -254,6 +246,10 @@
         }
         else if(methodNo == 2) {
             success = YES;
+            NSInteger selected = [self.lunchView selectedRowInComponent:0];
+            NSString * selectedAddress = [[self.lunchPickup objectAtIndex:selected] valueForKey:@"place"];
+            [defaults setObject:selectedAddress forKey:@"LunchAddress"];
+            [defaults synchronize];
             self.method = @"Lunch";
         }
         else if(methodNo == 1) {
