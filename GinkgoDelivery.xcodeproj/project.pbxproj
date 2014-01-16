@@ -39,6 +39,7 @@
 		A6B1AD7818404A8A00FA8E33 /* GinkgoDeliveryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1AD7718404A8A00FA8E33 /* GinkgoDeliveryTests.m */; };
 		A6EE36621872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EE36611872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.m */; };
 		A6EE3665187283AF00E6D1BE /* GinkgoDeliverySingleOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EE3664187283AF00E6D1BE /* GinkgoDeliverySingleOrderTableViewController.m */; };
+		A6F2C6C818888DA70027CF94 /* backGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6F2C6C718888DA70027CF94 /* backGround.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		A6EE36611872657700E6D1BE /* GinkgoDeliveryMyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryMyOrderTableViewController.m; sourceTree = "<group>"; };
 		A6EE3663187283AF00E6D1BE /* GinkgoDeliverySingleOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliverySingleOrderTableViewController.h; sourceTree = "<group>"; };
 		A6EE3664187283AF00E6D1BE /* GinkgoDeliverySingleOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliverySingleOrderTableViewController.m; sourceTree = "<group>"; };
+		A6F2C6C718888DA70027CF94 /* backGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = backGround.jpg; path = ../../../../../../../Desktop/backGround.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 		A6B1AD5318404A8A00FA8E33 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A6F2C6C718888DA70027CF94 /* backGround.jpg */,
 				A62EE0611840613600657015 /* AppIcon.appiconset */,
 				A6B1AD5418404A8A00FA8E33 /* GinkgoDelivery-Info.plist */,
 				A6B1AD5518404A8A00FA8E33 /* InfoPlist.strings */,
@@ -328,6 +331,7 @@
 				A6B1AD5718404A8A00FA8E33 /* InfoPlist.strings in Resources */,
 				A62EE0631840613600657015 /* Contents.json in Resources */,
 				A6B1AD6018404A8A00FA8E33 /* Main.storyboard in Resources */,
+				A6F2C6C818888DA70027CF94 /* backGround.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
