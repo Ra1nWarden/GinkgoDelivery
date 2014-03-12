@@ -155,6 +155,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="wZv-UI-gqR"/>
                     <connections>
+                        <outlet property="myOrderTableView" destination="8eE-Yg-GU5" id="IKF-iT-xhb"/>
                         <outlet property="view" destination="8eE-Yg-GU5" id="2As-sp-jAs"/>
                     </connections>
                 </tableViewController>
@@ -309,6 +310,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="methodLabel" destination="SxO-gW-z75" id="AF0-to-StV"/>
+                        <outlet property="myOrderTableView" destination="HBk-Re-0xS" id="e5f-Jv-aob"/>
                         <outlet property="view" destination="HBk-Re-0xS" id="6pd-qE-LqX"/>
                     </connections>
                 </tableViewController>

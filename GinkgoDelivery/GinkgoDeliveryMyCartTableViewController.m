@@ -17,9 +17,47 @@
 
 @synthesize method;
 @synthesize methodLabel;
-@synthesize deliveryFee;
+@synthesize myOrderTableView;
+@synthesize deliveryFee = _deliveryFee;
+@synthesize taxRate = _taxRate;
 @synthesize totalFee;
 @synthesize orders = _orders;
+
+- (NSNumber *)deliveryFee {
+    if(! _deliveryFee) {
+        PFQuery * query = [PFQuery queryWithClassName:@"Constants"];
+        query.cachePolicy = kPFCachePolicyNetworkOnly;
+        [query getObjectInBackgroundWithId:@"MYhBpVMyEs" block:^(PFObject * object, NSError * error) {
+            if(! error) {
+                _deliveryFee = [object valueForKey:@"value"];
+                [self.myOrderTableView reloadData];
+            }
+            else {
+                [self alertNoNetwork];
+            }
+        }];
+        _deliveryFee = [[NSNumber alloc] initWithDouble:0];
+    }
+    return _deliveryFee;
+}
+
+- (NSNumber *)taxRate {
+    if(! _taxRate) {
+        PFQuery * query = [PFQuery queryWithClassName:@"Constants"];
+        query.cachePolicy = kPFCachePolicyNetworkOnly;
+        [query getObjectInBackgroundWithId:@"UfniNTx7pk" block:^(PFObject * object, NSError * error) {
+            if(! error) {
+                _taxRate = [object valueForKey:@"value"];
+                [self.myOrderTableView reloadData];
+            }
+            else {
+                [self alertNoNetwork];
+            }
+        }];
+        _taxRate = [[NSNumber alloc] initWithDouble:0.04];
+    }
+    return _taxRate;
+}
 
 -(NSArray *)orders {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -50,7 +88,6 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.methodLabel setText:[NSString stringWithFormat:@"Delivery Method: %@", self.method]];
-    self.deliveryFee = [[NSNumber alloc]initWithDouble:0.0];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -155,7 +192,7 @@
         }
         if(indexPath.row == 1) {
             cell.textLabel.text = @"Tax";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [self.totalFee doubleValue] * 0.04];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [self.totalFee doubleValue] * [self.taxRate doubleValue]];
         }
         if(indexPath.row == 2) {
             cell.textLabel.text = @"Delivery Fee";
@@ -163,7 +200,7 @@
         }
         if(indexPath.row == 3) {
             cell.textLabel.text = @"Total";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", ([self.totalFee doubleValue] * 1.04 + [self.deliveryFee doubleValue])];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", ([self.totalFee doubleValue] * (1 + [self.taxRate doubleValue]) + [self.deliveryFee doubleValue])];
         }
     }
     return cell;

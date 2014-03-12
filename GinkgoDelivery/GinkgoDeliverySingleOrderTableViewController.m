@@ -16,7 +16,46 @@
 
 @synthesize orderObject;
 @synthesize viewTitle;
+@synthesize myOrderTableView;
+@synthesize taxRate = _taxRate;
+@synthesize deliveryFee = _deliveryFee;
 @synthesize orderList = _orderList;
+
+- (NSNumber *)taxRate {
+    if(! _taxRate) {
+        PFQuery * query = [PFQuery queryWithClassName:@"Constants"];
+        query.cachePolicy = kPFCachePolicyNetworkOnly;
+        [query getObjectInBackgroundWithId:@"UfniNTx7pk" block:^(PFObject * object, NSError * error) {
+            if(! error) {
+                _taxRate = [object valueForKey:@"value"];
+                [self.myOrderTableView reloadData];
+            }
+            else {
+                [self alertNoNetwork];
+            }
+        }];
+        _taxRate = [[NSNumber alloc] initWithDouble:0.04];
+    }
+    return _taxRate;
+}
+
+- (NSNumber *)deliveryFee {
+    if(! _deliveryFee) {
+        PFQuery * query = [PFQuery queryWithClassName:@"Constants"];
+        query.cachePolicy = kPFCachePolicyNetworkOnly;
+        [query getObjectInBackgroundWithId:@"MYhBpVMyEs" block:^(PFObject * object, NSError * error) {
+            if(! error) {
+                _deliveryFee = [object valueForKey:@"value"];
+                [self.myOrderTableView reloadData];
+            }
+            else {
+                [self alertNoNetwork];
+            }
+        }];
+        _deliveryFee = [[NSNumber alloc] initWithDouble:0];
+    }
+    return _deliveryFee;
+}
 
 - (NSArray *)orderList {
     if(! _orderList) {
@@ -109,22 +148,21 @@
     }
     else if(indexPath.section == 1) {
         NSNumber * salePrice = [self.orderObject valueForKey:@"salePrice"];
-        NSNumber * deliveryPrice = [[NSNumber alloc] initWithDouble:0];
         if(indexPath.row == 0) {
             cell.textLabel.text = @"Subtotal";
             cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [salePrice doubleValue]];
         }
         if(indexPath.row == 1) {
             cell.textLabel.text = @"Tax";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [salePrice doubleValue] * 0.04];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [salePrice doubleValue] * [self.taxRate doubleValue]];
         }
         if(indexPath.row == 2) {
             cell.textLabel.text = @"Delivery Fee";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [deliveryPrice doubleValue]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [self.deliveryFee doubleValue]];
         }
         if(indexPath.row == 3) {
             cell.textLabel.text = @"Total";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", ([salePrice doubleValue] * 1.04 + [deliveryPrice doubleValue])];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", ([salePrice doubleValue] * (1 + [self.taxRate doubleValue]) + [self.deliveryFee doubleValue])];
         }
     }
     else if(indexPath.section == 2) {
@@ -157,6 +195,11 @@
         cell.detailTextLabel.text = [self.orderObject valueForKey:@"status"];
     }
     return cell;
+}
+
+- (void)alertNoNetwork {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"You appear offline. Please check network connection!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 

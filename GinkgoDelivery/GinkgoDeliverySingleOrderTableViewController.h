@@ -14,5 +14,8 @@
 @property (nonatomic) PFObject * orderObject;
 @property (nonatomic) NSString * viewTitle;
 @property (nonatomic) NSArray * orderList;
+@property (nonatomic) NSNumber * taxRate;
+@property (nonatomic) NSNumber * deliveryFee;
+@property (strong, nonatomic) IBOutlet UITableView *myOrderTableView;
 
 @end

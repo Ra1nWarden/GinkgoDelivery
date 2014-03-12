@@ -14,7 +14,9 @@
 @property (nonatomic) NSString * method;
 @property (nonatomic) NSArray * orders;
 @property (nonatomic) NSNumber * deliveryFee;
+@property (nonatomic) NSNumber * taxRate;
 @property (nonatomic) NSNumber * totalFee;
+@property (strong, nonatomic) IBOutlet UITableView *myOrderTableView;
 
 @property (weak, nonatomic) IBOutlet UILabel *methodLabel;
 
