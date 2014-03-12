@@ -22,17 +22,33 @@
 @synthesize filteredResults = _filteredResults;
 @synthesize searchDisplayController;
 @synthesize method;
+@synthesize dishesTable;
 
 
 - (PFQuery *)query {
-    if(! _query)
+    if(! _query) {
         _query = [PFQuery queryWithClassName:@"Menu"];
+        _query.cachePolicy = kPFCachePolicyNetworkElseCache;
+        _query.maxCacheAge = 60*60;
+    }
     return _query;
 }
 
 - (NSArray *)products{
     if(! _products) {
-        _products = [self.query findObjects];
+        [self.query findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
+            if(! error) {
+                NSLog(@"inside block! count is %d", [objects count]);
+                _products = [[NSArray alloc] initWithArray:objects];
+                NSLog(@"before calling reload data, size of the array is %d", [self.products count]);
+                self.categories = nil;
+                [self.dishesTable reloadData];
+            }
+            else {
+                [self alertNoNetwork];
+            }
+        }];
+        _products = [[NSArray alloc] init];
     }
     return _products;
 }
@@ -197,6 +213,11 @@
     if([segue.identifier isEqualToString:@"showCart"]) {
         [segue.destinationViewController setMethod:self.method];
     }
+}
+
+- (void)alertNoNetwork {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"You appear offline. Please check network connection!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 

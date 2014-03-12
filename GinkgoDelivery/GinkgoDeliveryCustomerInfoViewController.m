@@ -28,6 +28,9 @@
 @synthesize method;
 @synthesize deliveryForm;
 @synthesize activeField;
+@synthesize deliveryAvailable;
+@synthesize lunchFailure;
+@synthesize network;
 
 - (UILabel *)pickUpLabel {
     if(! _pickUpLabel) {
@@ -48,7 +51,20 @@
 - (NSArray *)lunchPickup {
     if(!_lunchPickup) {
         PFQuery * query = [PFQuery queryWithClassName:@"PickUpPoint"];
-        _lunchPickup = [query findObjects];
+        query.cachePolicy = kPFCachePolicyNetworkElseCache;
+        query.maxCacheAge = 60*5;
+        [query findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
+            if(!error) {
+                _lunchPickup = [[NSArray alloc] initWithArray:objects];
+                [self.lunchView reloadAllComponents];
+            }
+            else {
+                NSLog(@"setting network to NO");
+                self.network = NO;
+                [self alertNoNetwork];
+            }
+        }];
+        _lunchPickup = [[NSArray alloc] init];
     }
     return _lunchPickup;
 }
@@ -57,7 +73,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
     }
     return self;
 }
@@ -65,6 +80,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.network = YES;
     [self registerForKeyboardNotifications];
     [self.view addSubview:self.pickUpLabel];
     [self.view addSubview:self.lunchView];
@@ -212,19 +228,58 @@
     UISegmentedControl * segControl = (UISegmentedControl *) sender;
     NSInteger selection = [segControl selectedSegmentIndex];
     if(selection == 2) {
+        NSLog(@"network is %hhd", self.network);
         [self.deliveryForm setHidden:YES];
         [self.pickUpLabel setHidden:YES];
-        [self.lunchView setHidden:NO];
+        if(self.network) {
+            [self.lunchView setHidden:NO];
+            [self.lunchFailure setHidden:YES];
+        }
+        else {
+            [self.lunchView setHidden:YES];
+            [self.lunchFailure setHidden:NO];
+        }
+        [self.deliveryAvailable setHidden:YES];
     }
     if(selection == 1) {
-        [self.deliveryForm setHidden:NO];
+        PFQuery * query = [PFQuery queryWithClassName:@"Constants"];
+        query.cachePolicy = kPFCachePolicyNetworkOnly;
+        [query findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
+            if (! error) {
+                PFObject * object;
+                for(PFObject * each in objects) {
+                    if ([[each valueForKey:@"objectId"] isEqualToString:@"rvgUhbjnWc"]) {
+                        object = each;
+                        break;
+                    }
+                }
+                NSNumber * value = [object valueForKey:@"value"];
+                if ([value isEqualToNumber:[NSNumber numberWithInt:1]]) {
+                    [self.deliveryForm setHidden:NO];
+                    [self.deliveryAvailable setHidden:YES];
+                }
+                else {
+                    [self.deliveryForm setHidden:YES];
+                    [self.deliveryAvailable setHidden:NO];
+                }
+            }
+            else {
+                NSLog(@"reached here!");
+                [self.deliveryForm setHidden:YES];
+                [self.deliveryAvailable setHidden:NO];
+                [self alertNoNetwork];
+            }
+        }];
         [self.pickUpLabel setHidden:YES];
         [self.lunchView setHidden:YES];
+        [self.lunchFailure setHidden:YES];
     }
     if(selection == 0) {
         [self.deliveryForm setHidden:YES];
         [self.pickUpLabel setHidden:NO];
         [self.lunchView setHidden:YES];
+        [self.deliveryAvailable setHidden:YES];
+        [self.lunchFailure setHidden:YES];
     }
 }
 
@@ -314,7 +369,10 @@
     self.activeField = textField;
 }
 
-
+- (void)alertNoNetwork {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"You appear offline. Please check network connection!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
 
 
 @end

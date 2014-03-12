@@ -21,7 +21,6 @@
 
 @property (nonatomic) UITextField * activeField;
 
-
 @property (weak, nonatomic) IBOutlet UIScrollView *deliveryForm;
 @property (nonatomic) UIPickerView *lunchView;
 @property (nonatomic) UILabel *pickUpLabel;
@@ -30,5 +29,8 @@
 @property (nonatomic) NSArray * lunchPickup;
 @property (nonatomic) NSString * method;
 
+@property (weak, nonatomic) IBOutlet UILabel *deliveryAvailable;
+@property (weak, nonatomic) IBOutlet UILabel *lunchFailure;
+@property (nonatomic) BOOL network;
 
 @end

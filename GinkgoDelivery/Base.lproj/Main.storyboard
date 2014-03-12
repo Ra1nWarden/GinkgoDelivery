@@ -164,6 +164,7 @@
         <!--Ginkgo Delivery Orders Table View Controller - Menu-->
         <scene sceneID="TsR-Yj-wko">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hRI-i2-vBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Kts-f0-0BC" customClass="GinkgoDeliveryOrdersTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Msw-KF-DnN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -218,10 +219,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dishSearch" destination="Pvq-Ij-Iol" id="S1H-1j-tS6"/>
+                        <outlet property="dishesTable" destination="Msw-KF-DnN" id="k22-fF-QoC"/>
                         <segue destination="qFO-tM-AHg" kind="push" identifier="dishInfo" id="CWR-9S-Cv1"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hRI-i2-vBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1008" y="-41"/>
         </scene>
@@ -395,11 +396,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed to load lunch pick up points :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JHV-eQ-7b7">
+                                <rect key="frame" x="26" y="369" width="268" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nick Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dMa-Xy-y4U">
                                 <rect key="frame" x="20" y="84" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery is unavailable now :(" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YTI-VW-7DX">
+                                <rect key="frame" x="43" y="377" width="223" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LAp-Ah-Hg5">
@@ -441,7 +454,7 @@
                                 </connections>
                             </segmentedControl>
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="dWV-iI-UNM" customClass="UIScrollView">
-                                <rect key="frame" x="20" y="283" width="280" height="254"/>
+                                <rect key="frame" x="20" y="278" width="280" height="254"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" minimumFontSize="17" id="jng-0A-xr3">
@@ -501,8 +514,10 @@
                         <outlet property="addressField" destination="jng-0A-xr3" id="TRx-1N-xMa"/>
                         <outlet property="aptNo" destination="HaV-h1-bRl" id="95t-pQ-tHv"/>
                         <outlet property="city" destination="ieW-3s-zag" id="siG-60-UwM"/>
+                        <outlet property="deliveryAvailable" destination="YTI-VW-7DX" id="XjQ-wV-jzG"/>
                         <outlet property="deliveryForm" destination="dWV-iI-UNM" id="KrX-Ka-y58"/>
                         <outlet property="deliveryFormLabel" destination="GPA-At-ZgD" id="s00-QI-dK9"/>
+                        <outlet property="lunchFailure" destination="JHV-eQ-7b7" id="7Zx-7I-mDP"/>
                         <outlet property="nameField" destination="voa-kM-2JK" id="jvF-Ux-wyk"/>
                         <outlet property="phoneNoField" destination="vEa-YG-PYW" id="DFO-tU-Sn1"/>
                         <outlet property="segControl" destination="qpC-0c-B5k" id="I2t-TQ-Tey"/>

@@ -18,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *dishSearch;
 @property (nonatomic) UISearchDisplayController * searchDisplayController;
 @property (nonatomic) NSString * method;
+@property (strong, nonatomic) IBOutlet UITableView *dishesTable;
+
 
 @end
