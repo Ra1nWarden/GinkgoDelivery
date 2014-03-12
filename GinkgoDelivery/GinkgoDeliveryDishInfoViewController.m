@@ -133,6 +133,7 @@
     else {
         NSMutableDictionary * newOrder = [[NSMutableDictionary alloc] init];
         [newOrder setObject:[self.dish valueForKey:@"Name"] forKey:@"Name"];
+        [newOrder setObject:[self.dish valueForKey:@"NameChs"] forKey:@"NameChs"];
         [newOrder setObject:[self.dish valueForKey:@"objectId"] forKey:@"ObjectId"];
         [newOrder setObject:[self.dish valueForKey:@"Price"] forKey:@"Price"];
         [newOrder setObject:objectCount forKey:@"Quantity"];
