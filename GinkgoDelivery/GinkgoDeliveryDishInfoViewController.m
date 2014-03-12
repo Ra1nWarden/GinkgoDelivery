@@ -26,8 +26,10 @@
 
 
 - (PFQuery *)query {
-    if(!_query)
+    if(!_query) {
         _query = [PFQuery queryWithClassName:@"Image"];
+        _query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    }
     return _query;
 }
 

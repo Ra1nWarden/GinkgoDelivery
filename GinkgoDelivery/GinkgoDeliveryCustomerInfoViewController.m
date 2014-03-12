@@ -59,7 +59,6 @@
                 [self.lunchView reloadAllComponents];
             }
             else {
-                NSLog(@"setting network to NO");
                 self.network = NO;
                 [self alertNoNetwork];
             }
@@ -228,7 +227,6 @@
     UISegmentedControl * segControl = (UISegmentedControl *) sender;
     NSInteger selection = [segControl selectedSegmentIndex];
     if(selection == 2) {
-        NSLog(@"network is %hhd", self.network);
         [self.deliveryForm setHidden:YES];
         [self.pickUpLabel setHidden:YES];
         if(self.network) {
