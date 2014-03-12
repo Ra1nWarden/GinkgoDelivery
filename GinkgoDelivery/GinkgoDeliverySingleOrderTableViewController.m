@@ -53,7 +53,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -72,6 +72,9 @@
         else
             return 3;
     }
+    else if (section == 3) {
+        return 1;
+    }
     return 0;
 }
 
@@ -86,6 +89,9 @@
             return @"Your Information";
         else
             return @"Deliver to";
+    }
+    else if (section == 3) {
+        return @"Live Updates";
     }
     return nil;
 }
@@ -145,6 +151,10 @@
                 cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
             }
         }
+    }
+    else if (indexPath.section == 3) {
+        cell.textLabel.text = @"Order Status";
+        cell.detailTextLabel.text = [self.orderObject valueForKey:@"status"];
     }
     return cell;
 }
