@@ -224,43 +224,53 @@
     newOrder[@"specialIns"] = specilIns;
     newOrder[@"order"] = self.orders;
     PFQuery * query = [PFQuery queryWithClassName:@"Order"];
-    int storedCount = [query countObjects];
-    storedCount++;
-    newOrder[@"orderNo"] = [NSNumber numberWithInt:storedCount];
-    [newOrder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error){
-        if(succeeded) {
-            if([self.method isEqualToString:@"Lunch"])
-               [defauls removeObjectForKey:@"LunchOrder"];
-            else if([self.method isEqualToString:@"Delivery"])
-                [defauls removeObjectForKey:@"DeliveryOrder"];
-            else if([self.method isEqualToString:@"PickUp"])
-                [defauls removeObjectForKey:@"PickUpOrder"];
-            [defauls synchronize];
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                for(PFObject * each in objects) {
-                    if([[each objectForKey:@"orderNo"] isEqualToNumber:[NSNumber numberWithInt:storedCount]]) {
-
-                        NSString * objectId = [each valueForKey:@"objectId"];
-                        NSMutableArray * localOrder = [[defauls objectForKey:@"localOrder"] mutableCopy];
-                        if(!localOrder)
-                            localOrder = [[NSMutableArray alloc] init];
-                        [localOrder addObject:objectId];
-                        [defauls setObject:localOrder forKey:@"localOrder"];
-                        [defauls synchronize];
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Submitted!" message:[NSString stringWithFormat:@"Your order number is %d. \n Verification code is %@", storedCount, objectId] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                        [alert show];
-                        [self.navigationController popToRootViewControllerAnimated:YES];
-                        break;
-                    }
+    
+    [query countObjectsInBackgroundWithBlock:^(int storedCount, NSError * error) {
+        if (! error) {
+            storedCount++;
+            newOrder[@"orderNo"] = [NSNumber numberWithInt:storedCount];
+            [newOrder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error){
+                if(succeeded && ! error) {
+                    if([self.method isEqualToString:@"Lunch"])
+                        [defauls removeObjectForKey:@"LunchOrder"];
+                    else if([self.method isEqualToString:@"Delivery"])
+                        [defauls removeObjectForKey:@"DeliveryOrder"];
+                    else if([self.method isEqualToString:@"PickUp"])
+                        [defauls removeObjectForKey:@"PickUpOrder"];
+                    [defauls synchronize];
+                    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                        for(PFObject * each in objects) {
+                            if([[each objectForKey:@"orderNo"] isEqualToNumber:[NSNumber numberWithInt:storedCount]]) {
+                                
+                                NSString * objectId = [each valueForKey:@"objectId"];
+                                NSMutableArray * localOrder = [[defauls objectForKey:@"localOrder"] mutableCopy];
+                                if(!localOrder)
+                                    localOrder = [[NSMutableArray alloc] init];
+                                [localOrder addObject:objectId];
+                                [defauls setObject:localOrder forKey:@"localOrder"];
+                                [defauls synchronize];
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Submitted!" message:[NSString stringWithFormat:@"Your order number is %d. \n Verification code is %@", storedCount, objectId] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                                [alert show];
+                                [self.navigationController popToRootViewControllerAnimated:YES];
+                                break;
+                            }
+                        }
+                    }];
+                }
+                else {
+                    [self alertNoNetwork];
                 }
             }];
         }
+        else {
+            [self alertNoNetwork];
+        }
     }];
+    }
+
+- (void)alertNoNetwork {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"You appear offline. Please check network connection!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
-
-
-
-
-
 
 @end

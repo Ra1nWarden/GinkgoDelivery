@@ -18,7 +18,6 @@
 @synthesize imageView;
 @synthesize descriptionView;
 @synthesize query = _query;
-@synthesize dishImage = _dishImage;
 @synthesize quanStep;
 @synthesize quanLabel;
 @synthesize method;
@@ -33,12 +32,21 @@
     return _query;
 }
 
-- (PFObject *)dishImage {
-    if(!_dishImage) {
-        NSString * imgID = [self.dish valueForKey:@"imageID"];
-        _dishImage = [self.query getObjectWithId:imgID];
-    }
-    return _dishImage;
+- (void)displayDishImage {
+    NSString * imgID = [self.dish valueForKey:@"imageID"];
+    [self.query getObjectInBackgroundWithId:imgID block:^(PFObject * object, NSError * error) {
+        if(! error) {
+            PFFile * imgFile = [object valueForKey:@"picture"];
+            [imgFile getDataInBackgroundWithBlock: ^(NSData * data, NSError * error) {
+                if(! error)
+                    self.imageView.image = [UIImage imageWithData:data];
+                [self.imageView setNeedsDisplay];
+            }];
+        }
+        else {
+            [self alertNoNetwork];
+        }
+    }];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,12 +65,7 @@
     [self.navigationItem setBackBarButtonItem:backButton];
 	// Do any additional setup after loading the view.
     self.title = [self.dish valueForKey:@"Name"];
-    PFFile * imgFile = [self.dishImage valueForKey:@"picture"];
-    [imgFile getDataInBackgroundWithBlock: ^(NSData * data, NSError * error) {
-        if(! error)
-            self.imageView.image = [UIImage imageWithData:data];
-        [self.imageView setNeedsDisplay];
-    }];
+    [self displayDishImage];
     self.descriptionView.text = [self.dish valueForKey:@"Description"];
     self.quanStep.minimumValue = 1;
     self.quanStep.stepValue = 1;
@@ -148,6 +151,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)alertNoNetwork {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"You appear offline. Please check network connection!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end

@@ -38,9 +38,7 @@
     if(! _products) {
         [self.query findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
             if(! error) {
-                NSLog(@"inside block! count is %d", [objects count]);
                 _products = [[NSArray alloc] initWithArray:objects];
-                NSLog(@"before calling reload data, size of the array is %d", [self.products count]);
                 self.categories = nil;
                 [self.dishesTable reloadData];
             }

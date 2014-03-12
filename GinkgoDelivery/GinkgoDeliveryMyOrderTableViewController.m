@@ -16,6 +16,7 @@
 @implementation GinkgoDeliveryMyOrderTableViewController
 
 @synthesize confirmedOrders = _confirmedOrders;
+@synthesize myOrderTable;
 
 -(NSArray *)confirmedOrders {
     if(!_confirmedOrders) {
@@ -26,16 +27,29 @@
         if(!storedOrders)
             storedOrders = [[NSMutableArray alloc] init];
         PFQuery * query = [PFQuery queryWithClassName:@"Order"];
-        for(NSString * eachId in storedOrders) {
-            PFObject * eachOnlineOrder = [query getObjectWithId:eachId];
-            if(eachOnlineOrder) {
-                [tempConfirmedOrders addObject:eachOnlineOrder];
-                [updatedLocalOrder addObject:eachId];
+        query.cachePolicy = kPFCachePolicyNetworkOnly;
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
+            if (! error) {
+                for(NSString * eachId in storedOrders) {
+                    for(PFObject * eachObj in objects) {
+                        if ([[eachObj valueForKey:@"objectId"] isEqualToString:eachId]) {
+                            [tempConfirmedOrders addObject:eachObj];
+                            [updatedLocalOrder addObject:eachId];
+                            break;
+                        }
+                    }
+                }
+                [defaults setObject:updatedLocalOrder forKey:@"localOrder"];
+                [defaults synchronize];
+                _confirmedOrders = tempConfirmedOrders;
+                [self.myOrderTable reloadData];
             }
-        }
-        [defaults setObject:updatedLocalOrder forKey:@"localOrder"];
-        [defaults synchronize];
-        _confirmedOrders = tempConfirmedOrders;
+            else {
+                [self alertNoNetwork];
+            }
+        }];
+        _confirmedOrders = [[NSArray alloc] init];
     }
     return _confirmedOrders;
 }
@@ -114,6 +128,11 @@
         UITableViewCell * selectedCell = [self.tableView cellForRowAtIndexPath:selectedRow];
         [segue.destinationViewController setViewTitle:selectedCell.textLabel.text];
     }
+}
+
+- (void)alertNoNetwork {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"You appear offline. Please check network connection!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end

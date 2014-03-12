@@ -105,6 +105,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="My Orders" id="0YA-Sb-g8h"/>
                     <connections>
+                        <outlet property="myOrderTable" destination="NwQ-nE-Xx1" id="GrX-Fc-Dfz"/>
                         <outlet property="view" destination="NwQ-nE-Xx1" id="AAd-rC-xtI"/>
                         <segue destination="qF5-zM-GOt" kind="push" identifier="singleOrder" id="BpC-7p-pY2"/>
                     </connections>

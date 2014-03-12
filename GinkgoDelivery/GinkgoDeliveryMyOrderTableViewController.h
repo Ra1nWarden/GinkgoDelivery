@@ -12,5 +12,6 @@
 @interface GinkgoDeliveryMyOrderTableViewController : UITableViewController
 
 @property (nonatomic) NSArray * confirmedOrders;
+@property (strong, nonatomic) IBOutlet UITableView *myOrderTable;
 
 @end
