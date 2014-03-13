@@ -10,7 +10,6 @@
 		A62EE0631840613600657015 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A62EE0621840613600657015 /* Contents.json */; };
 		A62EE0651840632000657015 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62EE0641840632000657015 /* Default-568h@2x.png */; };
 		A62EE06B1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62EE06A1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m */; };
-		A62EE06D18408F3900657015 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE06C18408F3900657015 /* Parse.framework */; };
 		A62EE06F18408F8500657015 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE06E18408F8500657015 /* AudioToolbox.framework */; };
 		A62EE07118408F8E00657015 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07018408F8E00657015 /* CFNetwork.framework */; };
 		A62EE07318408F9F00657015 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07218408F9F00657015 /* CoreLocation.framework */; };
@@ -19,6 +18,7 @@
 		A62EE07918408FC200657015 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07818408FC200657015 /* QuartzCore.framework */; };
 		A62EE07B18408FCC00657015 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07A18408FCC00657015 /* Security.framework */; };
 		A62EE07F18408FE000657015 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62EE07E18408FE000657015 /* SystemConfiguration.framework */; };
+		A633205818D10C1D007E635A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A633205718D10C1D007E635A /* Parse.framework */; };
 		A65FFD9F184184750097AEDC /* GinkgoDeliveryHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65FFD9E184184750097AEDC /* GinkgoDeliveryHomeViewController.m */; };
 		A69E9771184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9770184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.m */; };
 		A69F1A4F1870DE16009BF564 /* GinkgoDeliveryMyCartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69F1A4E1870DE16009BF564 /* GinkgoDeliveryMyCartTableViewController.m */; };
@@ -57,7 +57,6 @@
 		A62EE0641840632000657015 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Default-568h@2x.png"; sourceTree = "<group>"; };
 		A62EE0691840844200657015 /* GinkgoDeliveryOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryOrdersTableViewController.h; sourceTree = SOURCE_ROOT; };
 		A62EE06A1840844200657015 /* GinkgoDeliveryOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryOrdersTableViewController.m; sourceTree = SOURCE_ROOT; };
-		A62EE06C18408F3900657015 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A62EE06E18408F8500657015 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A62EE07018408F8E00657015 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A62EE07218408F9F00657015 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -66,6 +65,7 @@
 		A62EE07818408FC200657015 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A62EE07A18408FCC00657015 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A62EE07E18408FE000657015 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A633205718D10C1D007E635A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A65FFD9D184184750097AEDC /* GinkgoDeliveryHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryHomeViewController.h; sourceTree = SOURCE_ROOT; };
 		A65FFD9E184184750097AEDC /* GinkgoDeliveryHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GinkgoDeliveryHomeViewController.m; sourceTree = SOURCE_ROOT; };
 		A69E976F184579DC00779FFF /* GinkgoDeliveryCustomerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GinkgoDeliveryCustomerInfoViewController.h; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				A62EE07118408F8E00657015 /* CFNetwork.framework in Frameworks */,
 				A62EE06F18408F8500657015 /* AudioToolbox.framework in Frameworks */,
 				A6B1AD5118404A8A00FA8E33 /* UIKit.framework in Frameworks */,
-				A62EE06D18408F3900657015 /* Parse.framework in Frameworks */,
+				A633205818D10C1D007E635A /* Parse.framework in Frameworks */,
 				A6B1AD4D18404A8A00FA8E33 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +165,7 @@
 		A6B1AD4B18404A8A00FA8E33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A633205718D10C1D007E635A /* Parse.framework */,
 				A62EE07E18408FE000657015 /* SystemConfiguration.framework */,
 				A62EE07A18408FCC00657015 /* Security.framework */,
 				A62EE07818408FC200657015 /* QuartzCore.framework */,
@@ -173,7 +174,6 @@
 				A62EE07218408F9F00657015 /* CoreLocation.framework */,
 				A62EE07018408F8E00657015 /* CFNetwork.framework */,
 				A62EE06E18408F8500657015 /* AudioToolbox.framework */,
-				A62EE06C18408F3900657015 /* Parse.framework */,
 				A6B1AD4C18404A8A00FA8E33 /* Foundation.framework */,
 				A6B1AD4E18404A8A00FA8E33 /* CoreGraphics.framework */,
 				A6B1AD5018404A8A00FA8E33 /* UIKit.framework */,

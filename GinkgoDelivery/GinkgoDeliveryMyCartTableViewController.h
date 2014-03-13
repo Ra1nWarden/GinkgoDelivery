@@ -19,5 +19,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *myOrderTableView;
 
 @property (weak, nonatomic) IBOutlet UILabel *methodLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *submitButton;
 
 @end

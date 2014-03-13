@@ -21,6 +21,8 @@
 @synthesize deliveryFee = _deliveryFee;
 @synthesize taxRate = _taxRate;
 @synthesize totalFee;
+@synthesize spinner;
+@synthesize submitButton;
 @synthesize orders = _orders;
 
 - (NSNumber *)deliveryFee {
@@ -231,10 +233,14 @@
 }
 
 - (IBAction)submitOrder:(id)sender {
-
+    
+    [self.submitButton setEnabled:NO];
+    
+    [self.tableView bringSubviewToFront:self.spinner];
+    [self.spinner startAnimating];
+    
     PFObject * newOrder = [PFObject objectWithClassName:@"Order"];
     NSUserDefaults * defauls = [NSUserDefaults standardUserDefaults];
-    
     newOrder[@"name"] = [defauls objectForKey:@"Name"];
     newOrder[@"phoneNo"] = [defauls objectForKey:@"PhoneNo"];
     newOrder[@"method"] = self.method;
@@ -276,34 +282,45 @@
                         [defauls removeObjectForKey:@"PickUpOrder"];
                     [defauls synchronize];
                     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                        for(PFObject * each in objects) {
-                            if([[each objectForKey:@"orderNo"] isEqualToNumber:[NSNumber numberWithInt:storedCount]]) {
-                                
-                                NSString * objectId = [each valueForKey:@"objectId"];
-                                NSMutableArray * localOrder = [[defauls objectForKey:@"localOrder"] mutableCopy];
-                                if(!localOrder)
-                                    localOrder = [[NSMutableArray alloc] init];
-                                [localOrder addObject:objectId];
-                                [defauls setObject:localOrder forKey:@"localOrder"];
-                                [defauls synchronize];
-                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Submitted!" message:[NSString stringWithFormat:@"Your order number is %d. \n Verification code is %@", storedCount, objectId] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                                [alert show];
-                                [self.navigationController popToRootViewControllerAnimated:YES];
-                                break;
+                        if(! error) {
+                            for(PFObject * each in objects) {
+                                if([[each objectForKey:@"orderNo"] isEqualToNumber:[NSNumber numberWithInt:storedCount]]) {
+                                    NSString * objectId = [each valueForKey:@"objectId"];
+                                    NSMutableArray * localOrder = [[defauls objectForKey:@"localOrder"] mutableCopy];
+                                    if(!localOrder)
+                                        localOrder = [[NSMutableArray alloc] init];
+                                    [localOrder addObject:objectId];
+                                    [defauls setObject:localOrder forKey:@"localOrder"];
+                                    [defauls synchronize];
+                                    [self.spinner stopAnimating];
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Submitted!" message:[NSString stringWithFormat:@"Your order number is %d. \n Verification code is %@", storedCount, objectId] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                                    [alert show];
+                                    [self.navigationController popToRootViewControllerAnimated:YES];
+                                    break;
+                                }
                             }
+                        }
+                        else {
+                            [self.submitButton setEnabled:YES];
+                            [self.spinner stopAnimating];
+                            [self alertNoNetwork];
                         }
                     }];
                 }
                 else {
+                    [self.submitButton setEnabled:YES];
+                    [self.spinner stopAnimating];
                     [self alertNoNetwork];
                 }
             }];
         }
         else {
+            [self.submitButton setEnabled:YES];
+            [self.spinner stopAnimating];
             [self alertNoNetwork];
         }
     }];
-    }
+}
 
 - (void)alertNoNetwork {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"You appear offline. Please check network connection!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
